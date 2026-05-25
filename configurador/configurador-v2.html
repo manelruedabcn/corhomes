@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Configurador — COR.HOMES</title>
+  <meta name="description" content="Diseña tu casa con corazón. Elige modelo, exterior, cocina, baños y recibe una propuesta personalizada.">
+  <meta property="og:title" content="Configurador — COR.HOMES">
+  <meta property="og:description" content="Diseña tu casa con corazón.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://corhomes.com/assets/images/hero-home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Configurador — COR.HOMES">
+  <meta name="twitter:description" content="Diseña tu casa con corazón.">
+  <meta name="theme-color" content="#3F5F4A">
+  <link rel="icon" type="image/png" href="../assets/images/isotipo-cor-homes-sin-fondo.png">
+  <link rel="canonical" href="https://corhomes.com/configurador/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/configurador-v2.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ═══════════ SIDEBAR (desktop) ═══════════ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../index.html" class="brand-link" id="brandLink">
+      <div class="brand-block">
+        <img 
+          src="../assets/images/isotipo-cor-homes-sin-fondo.png" 
+          alt="COR HOMES"
+          class="brand-isotype"
+        />
+        <div class="brand-name">
+          COR HOMES
+        </div>
+        <div class="brand-subtitle">
+          CONFIGURADOR
+        </div>
+      </div>
+    </a>
+    <nav class="sidebar-steps" id="sidebarSteps">
+      <!-- JS populated -->
+    </nav>
+    <div class="sidebar-footer">
+      <a href="https://wa.me/34652629991" target="_blank" class="sidebar-whatsapp" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══════════ HEADER MOBILE ═══════════ -->
+  <header class="header-mobile" id="headerMobile">
+    <a href="../index.html" class="header-brand" id="headerBrandLink">COR.HOMES</a>
+    <div class="header-progress-wrap">
+      <div class="header-progress-bar">
+        <div class="header-progress-fill" id="progressFill" style="width: 14%"></div>
+      </div>
+      <span class="header-step-indicator" id="stepIndicator">1/7</span>
+    </div>
+    <button class="resumen-toggle" id="resumenToggle" aria-label="Ver resumen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="resumen-badge" id="resumenCount">0</span>
+    </button>
+  </header>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="main" id="main">
+
+    <!-- Step content (left on desktop, full on mobile) -->
+    <div class="step-content" id="stepContent">
+      <!-- Visual -->
+      <section class="visual-zone" id="visualZone">
+        <div class="visual-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          La base de vuestro hogar.
+        </div>
+        <div class="info-bar" id="infoBar" style="display: none">
+          <span class="info-name" id="infoName"></span>
+          <span class="info-stats" id="infoStats"></span>
+        </div>
+      </section>
+
+      <!-- Selector -->
+      <section class="selector-section" id="selectorSection">
+        <div class="selector-zone" id="selectorZone">
+          <!-- JS populated -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Resumen panel (desktop right) -->
+    <aside class="resumen-panel" id="resumenPanel">
+      <h3 class="resumen-panel-title">Tu proyecto</h3>
+      <div class="resumen-panel-list" id="resumenPanelLista">
+        <div style="color: var(--texto-muted); font-size: 0.85rem; padding: 16px 0; text-align: center;">Selecciona opciones para ver tu proyecto</div>
+      </div>
+      <div style="margin-top: 24px;">
+        <a href="https://wa.me/34652629991" target="_blank" id="btnWhatsapp" class="btn btn-whatsapp btn-full" style="display: none;" rel="noopener">
+          <span class="btn-whatsapp-text">Recibir propuesta</span>
+          <span class="btn-whatsapp-sub">Sin compromiso. Solo tú.</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Nav footer inside main central -->
+    <footer class="nav-footer" id="navFooter">
+      <button class="btn btn-ghost" id="btnPrev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="nav-footer-spacer"></div>
+      <button class="btn btn-primary" id="btnNext">Siguiente</button>
+    </footer>
+  </main>
+
+</div>
+
+<!-- ═══════════ RESUMEN DRAWER (mobile) ═══════════ -->
+<div class="resumen-drawer-backdrop" id="resumenBackdrop"></div>
+<div class="resumen-drawer" id="resumenDrawer">
+  <div class="resumen-drawer-handle"></div>
+  <h3 class="resumen-drawer-title">Tu proyecto</h3>
+  <div class="resumen-drawer-list" id="resumenLista">
+    <div style="color: var(--texto-muted); font-size: 0.85rem; padding: 16px 0; text-align: center;">Selecciona opciones para ver tu proyecto</div>
+  </div>
+</div>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ HIDDEN WEB3FORMS ═══════════ -->
+<form id="leadFormHidden" action="https://api.web3forms.com/submit" method="POST" style="display:none;" aria-hidden="true">
+  <input type="hidden" name="access_key" value="d1830734-071d-4919-87d6-c6a8a503e0c8">
+  <input type="hidden" name="subject" value="Nuevo proyecto COR.HOMES">
+  <input type="hidden" name="from_name" value="COR.HOMES Configurador">
+</form>
+
+<script src="../js/configurador-data.js"></script>
+<script src="../js/leads.js"></script>
+<script src="../js/configurador-v2.js"></script>
+</body>
+</html>

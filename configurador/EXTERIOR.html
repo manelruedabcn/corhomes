@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COR HOMES — Exterior. Diseño contemporáneo mediterráneo.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="COR HOMES — Exterior">
+  <meta property="og:description" content="Personaliza el exterior de tu casa con corazón.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../assets/images/isotipo-cor-homes-sin-fondo.png">
+  <link rel="canonical" href="https://corhomes.com/configurador/exterior">
+  <title>Exterior — COR HOMES</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #EDE8DF;
+      color: #1F2721;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+      height: 100vh;
+      height: 100dvh;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ══════════════════════════════════════════════════════════
+       MACRO LAYOUT
+       Tres capas: stepper (top) · render (centro) · selector (bottom)
+       ══════════════════════════════════════════════════════════ */
+    .atelier {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    /* ── Stepper — casi invisible ─────────────────────────── */
+    .stepper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.6rem;
+      padding: 1rem 2rem;
+      flex-shrink: 0;
+    }
+
+    .stepper-step {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(31, 39, 33, 0.25);
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .stepper-step.done {
+      color: rgba(31, 39, 33, 0.12);
+      cursor: pointer;
+    }
+
+    .stepper-step.done:hover {
+      color: rgba(31, 39, 33, 0.35);
+    }
+
+    .stepper-step.current {
+      color: #1F2721;
+    }
+
+    .stepper-step::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .stepper-step.current::after {
+      background: rgba(31, 39, 33, 0.3);
+    }
+
+    .stepper-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(31, 39, 33, 0.12);
+      flex-shrink: 0;
+    }
+
+    /* ── Render stage — el protagonista ───────────────────── */
+    .render-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 3rem;
+      position: relative;
+      min-height: 0;
+    }
+
+    .render-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .render-placeholder.fade-out {
+      opacity: 0;
+      transform: scale(0.975);
+    }
+
+    .render-placeholder-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .render-placeholder-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(31, 39, 33, 0.18);
+      letter-spacing: 0.06em;
+    }
+
+    .render-placeholder-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: rgba(31, 39, 33, 0.14);
+      letter-spacing: 0.08em;
+    }
+
+    .render-stage img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .render-stage img.fade-out {
+      opacity: 0;
+      transform: scale(0.975);
+    }
+
+    .render-label {
+      position: absolute;
+      top: 2rem;
+      left: 3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(31, 39, 33, 0.25);
+    }
+
+    /* ── Info inline (entre render y selector) ────────────── */
+    .info-inline {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: 0 3rem 0.3rem;
+      flex-shrink: 0;
+    }
+
+    .info-inline-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #1F2721;
+      line-height: 1;
+    }
+
+    .info-inline-stats {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: rgba(31, 39, 33, 0.4);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Selector — galería editorial ─────────────────────── */
+    .selector {
+      flex-shrink: 0;
+      padding: 0.5rem 2.5rem 1rem;
+    }
+
+    .selector-scroll {
+      display: flex;
+      gap: 0.35rem;
+      justify-content: center;
+    }
+
+    .sel-card {
+      flex-shrink: 0;
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sel-card:hover {
+      background: rgba(31, 39, 33, 0.025);
+    }
+
+    .sel-card.active {
+      background: rgba(31, 39, 33, 0.05);
+    }
+
+    .sel-card-thumb {
+      width: 56px;
+      height: 36px;
+      overflow: hidden;
+      border-radius: 1px;
+      background: #EDE8DF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(31, 39, 33, 0.06);
+    }
+
+    .sel-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sel-card-thumb--placeholder {
+      background: #DCD6CC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sel-card-thumb--placeholder .placeholder-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.48rem;
+      font-weight: 400;
+      color: rgba(31, 39, 33, 0.16);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .sel-card-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: rgba(31, 39, 33, 0.45);
+      letter-spacing: 0.03em;
+      transition: color 0.3s ease;
+    }
+
+    .sel-card.active .sel-card-name {
+      color: #1F2721;
+    }
+
+    .sel-card-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      color: rgba(31, 39, 33, 0.28);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Secciones colapsables en el selector ─────────────── */
+    .selector-section {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .selector-section-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(31, 39, 33, 0.2);
+      padding: 0 0.9rem;
+      margin-bottom: 0.1rem;
+    }
+
+    /* ── Mobile CTA ────────────────────────────────────────── */
+    .mob-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 0.5rem 1.25rem;
+      background: #EDE8DF;
+      border-top: 1px solid rgba(31, 39, 33, 0.06);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .mob-cta a {
+      flex: 1;
+      display: block;
+      padding: 0.8rem;
+      background: #3F5F4A;
+      color: #F5F2ED;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: 2px;
+      transition: background 0.25s ease;
+    }
+
+    .mob-cta a:active { background: #364d3f; }
+
+    .mob-cta a.secondary {
+      background: transparent;
+      color: rgba(31, 39, 33, 0.5);
+      border: 1px solid rgba(31, 39, 33, 0.12);
+      font-size: 0.62rem;
+    }
+
+    .mob-cta a.secondary:active {
+      background: rgba(31, 39, 33, 0.03);
+      color: #1F2721;
+    }
+
+    /* ── Mobile header (solo marca) ───────────────────────── */
+    .mob-marca {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 0.9rem 1.25rem;
+      background: linear-gradient(to bottom, #EDE8DF 60%, rgba(237, 232, 223, 0));
+    }
+
+    .mob-marca-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .mob-marca-inner img {
+      height: 1.15rem;
+      width: auto;
+      opacity: 0.85;
+    }
+
+    .mob-marca-inner span {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1F2721;
+      opacity: 0.4;
+      letter-spacing: 0.06em;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .stepper { gap: 0.8rem; padding: 0.7rem 1rem; overflow-x: auto; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
+      .stepper-step { font-size: 0.58rem; flex-shrink: 0; }
+      .stepper-dot { display: none; }
+      .stepper-step::after { bottom: -2px; }
+
+      .render-stage { padding: 1rem 1.5rem; }
+      .render-label { top: 1rem; left: 1.5rem; font-size: 0.55rem; }
+
+      .info-inline { padding: 0 1.5rem 0.2rem; gap: 0.6rem; align-items: baseline; }
+      .info-inline-name { font-size: 1.25rem; }
+      .info-inline-stats { font-size: 0.62rem; }
+
+      .selector { padding: 0.4rem 1rem 0.5rem; }
+      .selector-scroll { gap: 0.2rem; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 0.3rem; }
+
+      .sel-card { padding: 0.4rem 0.6rem; gap: 0.4rem; }
+      .sel-card-thumb { width: 42px; height: 28px; }
+      .sel-card-name { font-size: 0.65rem; }
+      .sel-card-meta { font-size: 0.58rem; }
+
+      .mob-marca { display: block; }
+      .mob-cta { display: flex; }
+      .atelier { padding-top: 2.8rem; padding-bottom: 4.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="atelier">
+
+    <!-- ═══════════════════════════════════════════════════════
+         STEPPER mínimo
+         ═══════════════════════════════════════════════════════ -->
+    <nav class="stepper" aria-label="Progreso del configurador">
+      <a href="../modelos.html" class="stepper-step done">01 Modelo</a>
+      <span class="stepper-dot"></span>
+      <span class="stepper-step current">02 Exterior</span>
+      <span class="stepper-dot"></span>
+      <span class="stepper-step">03 Cocina</span>
+      <span class="stepper-dot"></span>
+      <span class="stepper-step">04 Baños</span>
+      <span class="stepper-dot"></span>
+      <span class="stepper-step">05 Acabados</span>
+      <span class="stepper-dot"></span>
+      <span class="stepper-step">06 Resumen</span>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════
+         RENDER — el protagonista
+         ═══════════════════════════════════════════════════════ -->
+    <section class="render-stage" aria-label="Vista exterior de la casa">
+      <span class="render-label">Exterior</span>
+      <div id="renderImage" class="render-placeholder" aria-label="Render exterior pendiente">
+        <div class="render-placeholder-inner">
+          <span class="render-placeholder-text">Imagen pendiente</span>
+          <span class="render-placeholder-brand">COR.HOMES</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         INFORMACIÓN mínima
+         ═══════════════════════════════════════════════════════ -->
+    <div class="info-inline" id="infoInline">
+      <span class="info-inline-name" id="infoName">Brisa Natural</span>
+      <span class="info-inline-stats" id="infoStats">Cálido · Mediterráneo · Piedra clara</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SELECTOR — estilos arquitectónicos
+         ═══════════════════════════════════════════════════════ -->
+    <section class="selector" aria-label="Selecciona un estilo exterior">
+      <div class="selector-scroll" id="selectorScroll">
+
+        <div class="sel-card active" data-style="brisa-natural" data-name="Brisa Natural" data-stats="Cálido · Mediterráneo · Piedra clara" role="button" tabindex="0">
+          <div class="sel-card-thumb sel-card-thumb--placeholder">
+            <span class="placeholder-text">Brisa</span>
+          </div>
+          <span class="sel-card-name">Brisa Natural</span>
+          <span class="sel-card-meta">Cálido</span>
+        </div>
+
+        <div class="sel-card" data-style="green-biofilico" data-name="Green Biofílico" data-stats="Vegetación · Madera · Conexión viva" role="button" tabindex="0">
+          <div class="sel-card-thumb sel-card-thumb--placeholder">
+            <span class="placeholder-text">Green</span>
+          </div>
+          <span class="sel-card-name">Green Biofílico</span>
+          <span class="sel-card-meta">Sostenible</span>
+        </div>
+
+        <div class="sel-card" data-style="moderno-industrial" data-name="Moderno Industrial" data-stats="Líneas oscuras · Hormigón suave · Contemporáneo" role="button" tabindex="0">
+          <div class="sel-card-thumb sel-card-thumb--placeholder">
+            <span class="placeholder-text">Moderno</span>
+          </div>
+          <span class="sel-card-name">Moderno Industrial</span>
+          <span class="sel-card-meta">Contemporáneo</span>
+        </div>
+
+        <div class="sel-card" data-style="minimalismo-racional" data-name="Minimalismo Racional" data-stats="Blanco limpio · Esencial · Silencioso" role="button" tabindex="0">
+          <div class="sel-card-thumb sel-card-thumb--placeholder">
+            <span class="placeholder-text">Minimal</span>
+          </div>
+          <span class="sel-card-name">Minimalismo Racional</span>
+          <span class="sel-card-meta">Esencial</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE marca + CTA
+       ═══════════════════════════════════════════════════════ -->
+  <div class="mob-marca">
+    <div class="mob-marca-inner">
+      <img src="../assets/images/isotipo-cor-homes-sin-fondo.png" alt="">
+      <span>COR HOMES</span>
+    </div>
+  </div>
+
+  <div class="mob-cta">
+    <a href="../modelos.html" class="secondary">← Modelo</a>
+    <a href="COCINA.html" id="mobCtaLink">Continuar →</a>
+  </div>
+
+  <script>
+    /* ── Elements ─────────────────────────────────────────── */
+    const renderImage = document.getElementById('renderImage');
+    const infoName = document.getElementById('infoName');
+    const infoStats = document.getElementById('infoStats');
+    const selCards = document.querySelectorAll('.sel-card');
+
+    /* ── Select style ─────────────────────────────────────── */
+    function selectStyle(card) {
+      const name = card.dataset.name;
+      const stats = card.dataset.stats;
+      if (!name) return;
+
+      /* Since we use placeholder divs (not <img>), skip src swap.
+         When real renders are added to EXTERIOR_files, restore the
+         data-render + img swap logic. */
+
+      selCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      infoName.textContent = name;
+      infoStats.textContent = stats;
+    }
+
+    selCards.forEach(card => {
+      card.addEventListener('click', () => selectStyle(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectStyle(card);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

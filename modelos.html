@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelos — COR.HOMES</title>
+  <meta name="description" content="Explora nuestros modelos de casas con corazón. 2, 3, 4 y 5 habitaciones. Diseño sostenible y autoconstrucción asistida." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Modelos — COR.HOMES" />
+  <meta property="og:description" content="Casas con corazón, diseño sostenible y autoconstrucción asistida." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════════ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #3F5F4A;
+      --green-dark: #344F3E;
+      --bg: #F5F2ED;
+      --text: #1F2721;
+      --text-light: #5A665C;
+      --white-roto: #FDFBF7;
+      --border: #E2DDD4;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
+      --radius: 12px;
+      --side-w: 260px;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100dvh;
+      display: flex;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════════ */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--side-w);
+      background: var(--green);
+      color: #FDFBF7;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 28px;
+      z-index: 100;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-logo {
+      margin-bottom: 56px;
+    }
+
+    .sidebar-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(253, 251, 247, 0.75);
+      transition: all 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: rgba(255,255,255,0.1);
+      color: #FDFBF7;
+    }
+
+    .sidebar-nav a.active {
+      background: rgba(255,255,255,0.14);
+      font-weight: 600;
+    }
+
+    .sidebar-footer {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.8rem;
+      color: rgba(253, 251, 247, 0.45);
+    }
+
+    /* ═══════════════════════════════════════════════
+       MAIN
+       ═══════════════════════════════════════════════ */
+    .main {
+      margin-left: var(--side-w);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HEADER MOBILE
+       ═══════════════════════════════════════════════ */
+    .header-mobile {
+      display: none;
+      background: var(--green);
+      color: #FDFBF7;
+      padding: 14px 20px;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-mobile-logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #FDFBF7;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    /* ── Mobile sidebar overlay ── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 99;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .sidebar-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RENDER ZONE
+       ═══════════════════════════════════════════════ */
+    .render-zone {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 40px 20px;
+      background: var(--bg);
+      min-height: 55dvh;
+    }
+
+    .render-wrap {
+      width: 100%;
+      height: 100%;
+      max-height: 60dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .render-wrap img {
+      max-width: 100%;
+      max-height: 60dvh;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: opacity 0.4s ease;
+    }
+
+    .render-wrap img.fade-out {
+      opacity: 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       MODEL INFO OVERLAY
+       ═══════════════════════════════════════════════ */
+    .model-info {
+      text-align: center;
+      padding: 0 20px 12px;
+    }
+
+    .model-info h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .model-info .stats {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-top: 4px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .model-info .stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SELECTOR ZONE
+       ═══════════════════════════════════════════════ */
+    .selector-zone {
+      padding: 16px 32px 32px;
+      background: transparent;
+    }
+
+    .selector-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .model-cards {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .model-cards::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .model-cards::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .model-cards::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       MODEL CARD
+       ═══════════════════════════════════════════════ */
+    .model-card {
+      flex: 0 0 auto;
+      width: 180px;
+      background: var(--white-roto);
+      border-radius: var(--radius);
+      padding: 18px 16px 16px;
+      cursor: pointer;
+      scroll-snap-align: start;
+      border: 2px solid transparent;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .model-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: #D5CFC4;
+    }
+
+    .model-card.active {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(63,95,74,0.12), var(--shadow-md);
+      background: #FDFCF9;
+    }
+
+    .model-card-thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #EAE5DC;
+    }
+
+    .model-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .model-card-body h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .model-card-body .meta {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-top: 5px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CTA FIXED MOBILE
+       ═══════════════════════════════════════════════ */
+    .cta-mobile-fixed {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 20px 16px;
+      background: var(--bg);
+      z-index: 40;
+    }
+
+    .cta-mobile-fixed .btn-cta {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--green);
+      color: #FDFBF7;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s ease;
+    }
+
+    .cta-mobile-fixed .btn-cta:hover {
+      background: var(--green-dark);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════ */
+
+    /* Tablet: reduce sidebar, tighter cards */
+    @media (max-width: 1024px) {
+      :root { --side-w: 220px; }
+      .model-card { width: 160px; padding: 14px 12px 12px; }
+      .render-zone { padding: 28px 24px 16px; }
+      .selector-zone { padding: 12px 24px 28px; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .sidebar-overlay {
+        display: block;
+      }
+
+      .header-mobile {
+        display: flex;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .render-zone {
+        padding: 24px 20px 12px;
+        min-height: 42dvh;
+      }
+
+      .render-wrap img {
+        max-height: 38dvh;
+      }
+
+      .model-info h2 {
+        font-size: 1.6rem;
+      }
+
+      .model-info .stats {
+        font-size: 0.85rem;
+        gap: 14px;
+      }
+
+      .selector-zone {
+        padding: 10px 16px 80px; /* space for fixed CTA */
+      }
+
+      .model-card {
+        width: 148px;
+        padding: 12px 10px 12px;
+      }
+
+      .model-card-thumb {
+        aspect-ratio: 3/2;
+      }
+
+      .cta-mobile-fixed {
+        display: block;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 400px) {
+      .model-card { width: 134px; }
+      .render-zone { padding: 16px 12px 8px; }
+      .selector-zone { padding: 8px 12px 80px; }
+      .model-info h2 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <img src="assets/images/logo-cor-homes.png" alt="COR.HOMES" />
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="modelos.html" class="active">Modelos</a>
+      <a href="configurador/configurador-v2.html">Configurador</a>
+      <a href="#">Proyectos</a>
+      <a href="#">Sostenibilidad</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <div class="sidebar-footer">
+      © 2026 COR.HOMES<br />
+      Casas con corazón
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       SIDEBAR OVERLAY (Mobile)
+       ═══════════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN
+       ═══════════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- ── Header mobile ── -->
+    <div class="header-mobile">
+      <div class="header-mobile-logo">
+        <a href="index.html">
+          <img src="assets/images/logo-cor-homes.png" alt="COR.HOMES" />
+        </a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    </div>
+
+    <!-- ── Render zone ── -->
+    <section class="render-zone">
+      <div class="render-wrap">
+        <img
+          id="renderImage"
+          src="configurador/2H1P_files/24012_2_2_1_PAN.png"
+          alt="Modelo 2 habitaciones, 1 planta"
+        />
+      </div>
+    </section>
+
+    <!-- ── Model info ── -->
+    <div class="model-info">
+      <h2 id="infoName">2 Habitaciones · 1 Planta</h2>
+      <div class="stats" id="infoStats">
+        <span>🛏 2 hab.</span>
+        <span>🚿 1 baño</span>
+        <span>📐 ~72 m²</span>
+      </div>
+    </div>
+
+    <!-- ── Selector zone ── -->
+    <section class="selector-zone">
+      <div class="selector-label">Elige tu modelo</div>
+      <div class="model-cards" id="modelCards">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- ── CTA fixed mobile ── -->
+    <div class="cta-mobile-fixed">
+      <a href="configurador/configurador-v2.html" class="btn-cta" id="mobCtaLink">
+        Configurar este modelo
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    /* ═══════════════════════════════════════════════
+       MODEL DATA
+       ═══════════════════════════════════════════════ */
+    const models = [
+      {
+        code: '2H1P',
+        name: '2 Habitaciones · 1 Planta',
+        hab: 2,
+        banos: 1,
+        plantas: 1,
+        m2: '~72 m²',
+        image: 'configurador/2H1P_files/24012_2_2_1_PAN.png',
+        thumb: 'configurador/2H1P_files/MIN_24012_2_2_1_PAN.png'
+      },
+      {
+        code: '3H1P',
+        name: '3 Habitaciones · 1 Planta',
+        hab: 3,
+        banos: 1,
+        plantas: 1,
+        m2: '~92 m²',
+        image: 'configurador/3H1P_files/24023_3_2_1_PAN.png',
+        thumb: 'configurador/3H1P_files/MIN_24023_3_2_1_PAN.png'
+      },
+      {
+        code: '3H2P',
+        name: '3 Habitaciones · 2 Plantas',
+        hab: 3,
+        banos: 2,
+        plantas: 2,
+        m2: '~108 m²',
+        image: 'configurador/3H2P_files/25007_3_2_2_LIN.png',
+        thumb: 'configurador/3H2P_files/MIN_25007_3_2_2_LIN.png'
+      },
+      {
+        code: '4H2P',
+        name: '4 Habitaciones · 2 Plantas',
+        hab: 4,
+        banos: 2,
+        plantas: 2,
+        m2: '~132 m²',
+        image: 'configurador/4H2P_files/250032_4_3_2_LIN.png',
+        thumb: 'configurador/4H2P_files/MIN_250032_4_3_2_LIN.png'
+      },
+      {
+        code: '5H2P',
+        name: '5 Habitaciones · 2 Plantas',
+        hab: 5,
+        banos: 2,
+        plantas: 2,
+        m2: '~158 m²',
+        image: 'configurador/5H2P_files/24014_5_2_2_PAN.png',
+        thumb: 'configurador/5H2P_files/MIN_24014_5_2_2_PAN.png'
+      }
+    ];
+
+    let currentIndex = 0;
+
+    /* ── DOM refs ── */
+    const renderImage = document.getElementById('renderImage');
+    const infoName = document.getElementById('infoName');
+    const infoStats = document.getElementById('infoStats');
+    const modelCards = document.getElementById('modelCards');
+    const mobCtaLink = document.getElementById('mobCtaLink');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const menuToggle = document.getElementById('menuToggle');
+
+    /* ── Build cards ── */
+    function buildCards() {
+      modelCards.innerHTML = models.map((m, i) => `
+        <div class="model-card ${i === currentIndex ? 'active' : ''}"
+             data-index="${i}"
+             role="button"
+             tabindex="0"
+             aria-label="Seleccionar modelo ${m.name}">
+          <div class="model-card-thumb">
+            <img src="${m.thumb}" alt="${m.name}" loading="lazy" />
+          </div>
+          <div class="model-card-body">
+            <h3>${m.hab} hab.</h3>
+            <div class="meta">
+              <span>📐 ${m.m2}</span>
+              <span>🏠 ${m.plantas} ${m.plantas === 1 ? 'planta' : 'plantas'}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ── Select model ── */
+    function selectModel(index) {
+      if (index === currentIndex) return;
+      currentIndex = index;
+      const model = models[index];
+
+      /* Fade swap image */
+      renderImage.classList.add('fade-out');
+      setTimeout(() => {
+        renderImage.src = model.image;
+        renderImage.alt = model.name;
+        renderImage.classList.remove('fade-out');
+      }, 300);
+
+      infoName.textContent = model.name;
+      infoStats.innerHTML = `
+        <span>🛏 ${model.hab} hab.</span>
+        <span>🚿 ${model.banos} ${model.banos === 1 ? 'baño' : 'baños'}</span>
+        <span>📐 ${model.m2}</span>
+      `;
+
+      /* Update active card */
+      document.querySelectorAll('.model-card').forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+
+      /* Scroll card into view */
+      const activeCard = document.querySelector(`.model-card[data-index="${index}"]`);
+      if (activeCard) {
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      /* Save to localStorage */
+      try {
+        const saved = JSON.parse(localStorage.getItem('corHomesProject') || '{}');
+        saved.modelo = model.code;
+        localStorage.setItem('corHomesProject', JSON.stringify(saved));
+      } catch (e) { /* ignore */ }
+    }
+
+    /* ── Card click delegation ── */
+    modelCards.addEventListener('click', (e) => {
+      const card = e.target.closest('.model-card');
+      if (!card) return;
+      const index = parseInt(card.dataset.index);
+      selectModel(index);
+    });
+
+    /* ── Mobile sidebar toggle ── */
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    }
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      sidebarOverlay.classList.add('open');
+    }
+
+    menuToggle.addEventListener('click', () => {
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+    /* Close sidebar on nav link click (mobile) */
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) closeSidebar();
+      });
+    });
+
+    /* ── Init ── */
+    buildCards();
+  </script>
+
+</body>
+</html>

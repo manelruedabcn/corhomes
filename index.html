@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COR HOMES — Casas con corazón. Recibe en 48h una propuesta técnico-económica con diseño, presupuesto y simulación de hipoteca autopromotor.">
+  <meta name="keywords" content="casas con corazón, autoconstrucción asistida, vivienda sostenible, construir casa, orientación personalizada, COR HOMES, arquitectura mediterránea, hipoteca autopromotor">
+  <meta name="author" content="COR HOMES">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="COR HOMES — Casas con corazón">
+  <meta property="og:description" content="Tu casa soñada. Sin el caos de construirla. Recibe una propuesta personalizada en 48h.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://corhomes.com">
+  <meta property="og:image" content="https://corhomes.com/assets/images/hero-home.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="COR HOMES — Casas con corazón">
+  <meta name="twitter:description" content="Tu casa soñada. Sin el caos de construirla. Recibe una propuesta personalizada en 48h.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://corhomes.com">
+
+  <!-- Favicon (isotipo sin fondo) -->
+  <link rel="icon" type="image/png" href="assets/images/isotipo-cor-homes-sin-fondo.png">
+
+  <title>COR HOMES — Casas con corazón | Propuesta personalizada en 48h</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'verde': '#435244',
+            'arena': '#bbb29f',
+            'cream': '#FBF8F4',
+            'soft-black': '#1A1A1A',
+            'warm-gray': '#8C8C8C',
+          },
+          fontFamily: {
+            'serif': ['Prata', 'Georgia', 'serif'],
+            'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Prata + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Base ─────────────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FBF8F4;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Reveal on scroll ────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Hero overlay ────────────────────────────────────── */
+    .hero-overlay {
+      background: linear-gradient(
+        to right,
+        rgba(26, 26, 26, 0.55) 0%,
+        rgba(26, 26, 26, 0.35) 45%,
+        rgba(26, 26, 26, 0.15) 75%,
+        rgba(26, 26, 26, 0.10) 100%
+      );
+    }
+    @media (max-width: 767px) {
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(26, 26, 26, 0.45) 0%,
+          rgba(26, 26, 26, 0.25) 60%,
+          rgba(26, 26, 26, 0.35) 100%
+        );
+      }
+    }
+
+    /* ── Form fields ─────────────────────────────────────── */
+    .input-field {
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .input-field:focus {
+      border-color: #435244;
+      box-shadow: 0 0 0 3px rgba(67, 82, 68, 0.12);
+      outline: none;
+    }
+
+    /* ── Buttons ─────────────────────────────────────────── */
+    .btn-primary {
+      background-color: #435244;
+      color: #FBF8F4;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #354436;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.15);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #FBF8F4;
+      border: 1.5px solid rgba(251, 248, 244, 0.7);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-outline:hover {
+      background-color: rgba(251, 248, 244, 0.12);
+      border-color: #FBF8F4;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-dark {
+      background-color: transparent;
+      color: #1A1A1A;
+      border: 1.5px solid #1A1A1A;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-outline-dark:hover {
+      background-color: #1A1A1A;
+      color: #FBF8F4;
+      transform: translateY(-1px);
+    }
+
+    /* ── Gallery ─────────────────────────────────────────── */
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .gallery-item img {
+      transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* ── Selection ───────────────────────────────────────── */
+    ::selection {
+      background-color: #435244;
+      color: #FBF8F4;
+    }
+
+    /* ── Nav brand ───────────────────────────────────────── */
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-brand-icon {
+      width: 34px;
+      height: auto;
+      opacity: 0.95;
+    }
+    .nav-brand-text {
+      font-family: 'Prata', Georgia, serif;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      color: #FBF8F4;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .nav-brand-icon {
+        width: 28px;
+      }
+      .nav-brand-text {
+        font-size: 20px;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    /* ── Radio custom ────────────────────────────────────── */
+    input[type="radio"] {
+      accent-color: #435244;
+    }
+
+    /* ── Divider ornament ────────────────────────────────── */
+    .ornament-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #435244;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-cream text-soft-black">
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bg-verde sticky top-0 z-50" role="navigation" aria-label="Navegación principal">
+    <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16 md:h-20">
+      <a href="#" class="nav-brand" aria-label="COR HOMES — Ir al inicio">
+        <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="nav-brand-icon" aria-hidden="true">
+        <span class="nav-brand-text">COR HOMES</span>
+      </a>
+      <a href="configurador/configurador-v2.html" class="inline-flex items-center gap-1.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm md:text-base font-medium bg-arena text-verde hover:bg-arena/90 transition-colors whitespace-nowrap">
+        <span class="hidden sm:inline">Comenzar</span>
+        <span class="sm:hidden">Comenzar</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════ -->
+    <section class="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden" aria-labelledby="hero-headline">
+      <!-- Hero imagen -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="assets/images/hero-home.png"
+          alt="Vivienda mediterránea contemporánea con luz natural, piedra y madera"
+          class="w-full h-full object-cover object-[65%_center] sm:object-center"
+          loading="eager"
+        >
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+
+      <!-- Contenido hero -->
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-5 pt-20 pb-10 md:py-0">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
+          
+          <!-- Columna texto -->
+          <div>
+            <h1 id="hero-headline" class="text-white font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] mb-4 md:mb-6 font-normal tracking-tight reveal max-w-[11em]">
+              Tu casa soñada.<br>
+              Sin el caos de construirla.
+            </h1>
+            <p class="text-white/80 text-sm sm:text-lg leading-relaxed mb-5 md:mb-8 max-w-lg reveal reveal-delay-1">
+              Recibe en 48 horas una primera propuesta técnico-económica con diseño orientativo, presupuesto por gamas y simulación de hipoteca autopromotor.
+            </p>
+            <ul class="space-y-2 md:space-y-3 mb-0 reveal reveal-delay-2">
+              <li class="flex items-start gap-3 text-white/85 text-xs sm:text-base">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-arena flex-shrink-0"></span>
+                Diseño y distribución a medida
+              </li>
+              <li class="flex items-start gap-3 text-white/85 text-xs sm:text-base">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-arena flex-shrink-0"></span>
+                Presupuesto claro y desglosado
+              </li>
+              <li class="hidden sm:flex items-start gap-3 text-white/85 text-xs sm:text-base">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-arena flex-shrink-0"></span>
+                Simulación de cuota mensual
+              </li>
+            </ul>
+            <div class="mt-6 md:mt-8 reveal reveal-delay-3">
+              <a href="configurador/configurador-v2.html" class="inline-flex items-center gap-2 px-7 py-3.5 md:px-9 md:py-4 rounded-full text-sm md:text-base font-medium bg-arena text-verde hover:bg-arena/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-black/10 no-underline">
+                Comenzar mi estudio personalizado
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna formulario hero -->
+          <div class="bg-cream/95 backdrop-blur-sm rounded-sm p-5 sm:p-7 md:p-9 shadow-lg reveal reveal-delay-2">
+            <p class="font-serif text-lg sm:text-xl md:text-2xl text-soft-black mb-1 md:mb-2">Empieza tu estudio personalizado</p>
+            <p class="text-warm-gray text-xs sm:text-sm mb-4 md:mb-6 leading-relaxed">Primero definiremos el modelo, el estilo y el punto de partida de tu proyecto.</p>
+            
+            <form id="hero-form" class="space-y-3 md:space-y-4" novalidate>
+              <div>
+                <label for="hero-nombre" class="block text-xs font-medium text-soft-black/80 mb-1 md:mb-1.5">Nombre completo <span class="text-warm-gray">*</span></label>
+                <input
+                  type="text"
+                  id="hero-nombre"
+                  name="nombre"
+                  required
+                  autocomplete="name"
+                  placeholder="Tu nombre y apellido"
+                  class="input-field w-full px-3 md:px-4 py-2.5 md:py-3 rounded-sm border border-arena bg-white text-soft-black placeholder:text-arena text-sm"
+                >
+              </div>
+              <div>
+                <label for="hero-email" class="block text-xs font-medium text-soft-black/80 mb-1 md:mb-1.5">Email <span class="text-warm-gray">*</span></label>
+                <input
+                  type="email"
+                  id="hero-email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="tu@email.com"
+                  class="input-field w-full px-3 md:px-4 py-2.5 md:py-3 rounded-sm border border-arena bg-white text-soft-black placeholder:text-arena text-sm"
+                >
+              </div>
+              <div class="hidden sm:block">
+                <label for="hero-zona" class="block text-xs font-medium text-soft-black/80 mb-1 md:mb-1.5">Zona donde te gustaría construir</label>
+                <input
+                  type="text"
+                  id="hero-zona"
+                  name="zona"
+                  placeholder="Ej: Costa Brava, Girona, Alicante…"
+                  class="input-field w-full px-3 md:px-4 py-2.5 md:py-3 rounded-sm border border-arena bg-white text-soft-black placeholder:text-arena text-sm"
+                >
+              </div>
+              <fieldset>
+                <legend class="block text-xs font-medium text-soft-black/80 mb-1.5 md:mb-2">¿Tienes terreno? <span class="text-warm-gray">*</span></legend>
+                <div class="flex flex-wrap gap-x-4 md:gap-x-6 gap-y-1.5 md:gap-y-2">
+                  <label class="flex items-center gap-1.5 md:gap-2 cursor-pointer">
+                    <input type="radio" name="tiene_terreno" value="si" required class="w-3.5 h-3.5 md:w-4 md:h-4 accent-verde">
+                    <span class="text-xs md:text-sm text-soft-black">Sí</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 md:gap-2 cursor-pointer">
+                    <input type="radio" name="tiene_terreno" value="no" required class="w-3.5 h-3.5 md:w-4 md:h-4 accent-verde">
+                    <span class="text-xs md:text-sm text-soft-black">Aún no</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 md:gap-2 cursor-pointer">
+                    <input type="radio" name="tiene_terreno" value="mirando" required class="w-3.5 h-3.5 md:w-4 md:h-4 accent-verde">
+                    <span class="text-xs md:text-sm text-soft-black">Estoy mirando</span>
+                  </label>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-primary w-full px-5 md:px-6 py-3 md:py-3.5 rounded-sm text-sm sm:text-base tracking-wide cursor-pointer mt-1 md:mt-2">
+                COMENZAR CONFIGURADOR
+              </button>
+              <p class="text-center text-warm-gray text-xs">Sin compromiso. Primero defines, luego hablamos.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         LO QUE RECIBES EN 48H
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-cream" aria-labelledby="recibes-titulo">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <p class="text-xs tracking-[0.2em] uppercase text-verde font-medium mb-4">En menos de 48 horas</p>
+          <h2 id="recibes-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-soft-black leading-tight">
+            Lo que tendrás en tus manos en 48 horas.
+          </h2>
+          <p class="text-center text-warm-gray max-w-xl mx-auto mt-5 text-base sm:text-lg leading-relaxed reveal reveal-delay-1">
+            Un documento personalizado, completo y honesto. No un folleto comercial: una herramienta real para tomar la mejor decisión.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-16">
+          <!-- 1 -->
+          <div class="reveal reveal-delay-1">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Análisis de parcela</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Estudiamos orientación, normativa, topografía y potencial real. No trabajamos con suposiciones: trabajamos con datos.
+            </p>
+          </div>
+          <!-- 2 -->
+          <div class="reveal reveal-delay-1">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Diseño inicial personalizado</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Una primera distribución pensada para ti: tus metros, tu estilo de vida y tus prioridades. Nada de planos genéricos.
+            </p>
+          </div>
+          <!-- 3 -->
+          <div class="reveal reveal-delay-2">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Presupuesto desglosado</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Tres gamas de precio con partidas claras. Sabrás exactamente qué incluye cada euro desde el primer momento.
+            </p>
+          </div>
+          <!-- 4 -->
+          <div class="reveal reveal-delay-2">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Plan de pagos por fases</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Calendarización realista vinculada al avance de obra. Sin sorpresas de liquidez a mitad del proceso.
+            </p>
+          </div>
+          <!-- 5 -->
+          <div class="reveal reveal-delay-3">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Simulación de hipoteca</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Te orientamos sobre la hipoteca autopromotor: cómo funciona, qué necesitas y qué cuota mensual aproximada manejarías.
+            </p>
+          </div>
+          <!-- 6 -->
+          <div class="reveal reveal-delay-3">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <h3 class="font-serif text-xl text-soft-black mb-3">Conversación con un técnico</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              No recibes solo un PDF. Hablas con una persona que te explica cada punto y resuelve tus dudas en directo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         LOS 3 MIEDOS DE CONSTRUIR
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-[#F5F2EC]" aria-labelledby="miedos-titulo">
+      <div class="max-w-5xl mx-auto">
+        <h2 id="miedos-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-center text-soft-black mb-6 reveal leading-tight">
+          Construir una casa debería ilusionarte.<br>
+          <span class="font-normal">No agotarte.</span>
+        </h2>
+        <p class="text-center text-warm-gray max-w-xl mx-auto mb-16 text-base sm:text-lg leading-relaxed reveal reveal-delay-1">
+          La mayoría de personas empiezan con ilusión y acaban abrumadas. Estos son los tres miedos que más escuchamos.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <div class="text-center reveal reveal-delay-1">
+            <div class="w-14 h-14 mx-auto mb-5 flex items-center justify-center rounded-full bg-cream">
+              <svg class="w-6 h-6 text-verde" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl text-soft-black mb-3">Presupuestos que se disparan</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Cifras que cambian, partidas ocultas y la sensación de no tener el control del dinero que estás invirtiendo.
+            </p>
+          </div>
+          <div class="text-center reveal reveal-delay-2">
+            <div class="w-14 h-14 mx-auto mb-5 flex items-center justify-center rounded-full bg-cream">
+              <svg class="w-6 h-6 text-verde" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl text-soft-black mb-3">Procesos desordenados</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Demasiados interlocutores, plazos que se dilatan, permisos que nadie te explica y decisiones que parecen eternas.
+            </p>
+          </div>
+          <div class="text-center reveal reveal-delay-3">
+            <div class="w-14 h-14 mx-auto mb-5 flex items-center justify-center rounded-full bg-cream">
+              <svg class="w-6 h-6 text-verde" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl text-soft-black mb-3">No saber por dónde empezar</h3>
+            <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+              Dudas sobre el terreno, el diseño, los costes reales. Demasiada información suelta y poca claridad concreta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         DIFERENCIAL COR HOMES
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-cream" aria-labelledby="diferencial-titulo">
+      <div class="max-w-5xl mx-auto">
+        <h2 id="diferencial-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-center text-soft-black mb-6 reveal leading-tight">
+          No hacemos casas en serie.<br>
+          <span class="font-normal">Creamos hogares coherentes.</span>
+        </h2>
+        <p class="text-center text-warm-gray max-w-xl mx-auto mb-16 text-base sm:text-lg leading-relaxed reveal reveal-delay-1">
+          Cada proyecto es distinto. Nuestro enfoque pone orden, claridad y criterio humano en cada decisión.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+          <div class="flex gap-5 reveal reveal-delay-1">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Acompañamiento humano real</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                No te derivamos a un call center. Hablas con una persona que entiende tu proyecto y te guía con honestidad desde el primer día.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5 reveal reveal-delay-1">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Transparencia absoluta</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Cada cifra, cada plazo y cada decisión se explica sin letra pequeña. Sin sorpresas. Sin zonas grises.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5 reveal reveal-delay-2">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Diseño bioclimático real</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Orientación, ventilación natural, materiales térmicos. No es un extra: es la base para que tu casa funcione bien de verdad.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5 reveal reveal-delay-2">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Visión integral</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Espacios que fluyen, metros que se aprovechan y una estética que envejece bien. Nada de modas pasajeras.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5 reveal reveal-delay-3">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Optimización inteligente de costes</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                No se trata de gastar menos, sino de gastar mejor. Priorizamos lo que importa y eliminamos lo que no aporta valor.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-5 reveal reveal-delay-3">
+            <div class="flex-shrink-0 w-1 bg-verde rounded-full"></div>
+            <div>
+              <h3 class="font-serif text-lg text-soft-black mb-2">Coordinación profesional</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Arquitectos y técnicos trabajan de forma coordinada contigo. Tú tomas las decisiones importantes, nosotros gestionamos el resto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MÉTODO COR HOMES (4 FASES)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-[#F5F2EC]" aria-labelledby="metodo-titulo">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <p class="text-xs tracking-[0.2em] uppercase text-verde font-medium mb-4">Método COR HOMES</p>
+          <h2 id="metodo-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-soft-black leading-tight">
+            Cuatro fases.<br>
+            Para dormir tranquilo.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+          <!-- Fase 1 -->
+          <div class="text-center reveal reveal-delay-1">
+            <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-full bg-verde text-cream font-serif text-lg">1</div>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Viabilidad real</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Analizamos tu terreno, tu presupuesto y tus necesidades para confirmar que el proyecto es viable antes de avanzar.
+            </p>
+          </div>
+          <!-- Fase 2 -->
+          <div class="text-center reveal reveal-delay-2">
+            <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-full bg-verde text-cream font-serif text-lg">2</div>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Diseño y precio cerrado</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Definimos cada detalle del proyecto y cerramos un precio con partidas claras. Sin sorpresas posteriores.
+            </p>
+          </div>
+          <!-- Fase 3 -->
+          <div class="text-center reveal reveal-delay-3">
+            <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-full bg-verde text-cream font-serif text-lg">3</div>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Obra supervisada</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Coordinamos la ejecución con control técnico y económico permanente. Tú solo te ocupas de lo importante.
+            </p>
+          </div>
+          <!-- Fase 4 -->
+          <div class="text-center reveal reveal-delay-4">
+            <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center rounded-full bg-verde text-cream font-serif text-lg">4</div>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Llaves y legalización</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Final de obra, licencia de primera ocupación y entrega de llaves. Todo en regla para que solo te preocupes de estrenar casa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Connecting line (desktop) -->
+        <div class="hidden lg:block relative mt-10 mb-4">
+          <div class="absolute top-0 left-[calc(12.5%+1.5rem)] right-[calc(12.5%+1.5rem)] h-px bg-arena"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HIPOTECA AUTOPROMOTOR
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-cream" aria-labelledby="hipoteca-titulo">
+      <div class="max-w-4xl mx-auto">
+        <h2 id="hipoteca-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-center text-soft-black mb-6 reveal leading-tight">
+          Tu casa no es un gasto único.<br>
+          <span class="font-normal">Es una cuota mensual.</span>
+        </h2>
+        <p class="text-center text-warm-gray max-w-2xl mx-auto mb-16 text-base sm:text-lg leading-relaxed reveal reveal-delay-1">
+          La hipoteca autopromotor te permite financiar la construcción por fases, liberando el dinero a medida que la obra avanza. No necesitas tener todo el capital desde el día uno.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-14 reveal reveal-delay-2">
+          <div class="text-center">
+            <p class="font-serif text-3xl text-verde mb-3">1.</p>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Pagas por fases</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              El banco libera el dinero en tramos según el avance real de la obra. Solo pagas intereses por lo dispuesto.
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="font-serif text-3xl text-verde mb-3">2.</p>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Cuota progresiva</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Durante la construcción pagas solo intereses. La cuota completa empieza cuando la casa está terminada.
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="font-serif text-3xl text-verde mb-3">3.</p>
+            <h3 class="font-serif text-lg text-soft-black mb-2">Te orientamos sin compromiso</h3>
+            <p class="text-warm-gray text-sm leading-relaxed">
+              Te explicamos cómo funciona, qué documentación necesitas y te damos una simulación orientativa realista.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-center text-warm-gray text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed reveal reveal-delay-3">
+          No somos entidad financiera. Te orientamos con información transparente para que puedas tomar decisiones con criterio.
+        </p>
+        <p class="text-center text-warm-gray text-xs max-w-lg mx-auto mb-8 leading-relaxed reveal reveal-delay-3 italic">
+          La aprobación, importe y condiciones finales dependen de cada entidad bancaria y de la viabilidad técnica del proyecto.
+        </p>
+        <div class="text-center reveal reveal-delay-3">
+          <a href="configurador/configurador-v2.html" class="btn-primary inline-block px-8 py-3.5 rounded-sm text-sm sm:text-base tracking-wide no-underline">
+            QUIERO SABER MÁS SOBRE FINANCIACIÓN
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         ¿TIENES TERRENO?
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-[#F5F2EC]" aria-labelledby="terreno-titulo">
+      <div class="max-w-4xl mx-auto">
+        <h2 id="terreno-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-center text-soft-black mb-6 reveal leading-tight">
+          ¿Ya tienes terreno?
+        </h2>
+        <p class="text-center text-warm-gray max-w-lg mx-auto mb-16 text-base sm:text-lg leading-relaxed reveal reveal-delay-1">
+          Estés donde estés, podemos orientarte. Elige tu punto de partida.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <!-- Tengo terreno -->
+          <article class="bg-cream p-8 sm:p-10 md:p-12 rounded-sm shadow-sm border border-arena flex flex-col reveal reveal-delay-2">
+            <div class="mb-6">
+              <span class="inline-block text-xs tracking-[0.2em] uppercase text-verde font-medium mb-3">Opción A</span>
+              <h3 class="font-serif text-2xl sm:text-3xl text-soft-black mb-4">Tengo terreno</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Analizamos su potencial real, estudiamos la orientación y la normativa, y te orientamos sobre la vivienda más adecuada para esa parcela concreta.
+              </p>
+            </div>
+            <div class="mt-auto">
+              <a href="configurador/configurador-v2.html" class="btn-primary inline-block px-7 py-3 rounded-sm text-sm sm:text-base tracking-wide no-underline">
+                ANALIZAR MI TERRENO
+              </a>
+            </div>
+          </article>
+
+          <!-- No tengo terreno -->
+          <article class="bg-cream p-8 sm:p-10 md:p-12 rounded-sm shadow-sm border border-arena flex flex-col reveal reveal-delay-3">
+            <div class="mb-6">
+              <span class="inline-block text-xs tracking-[0.2em] uppercase text-verde font-medium mb-3">Opción B</span>
+              <h3 class="font-serif text-2xl sm:text-3xl text-soft-black mb-4">Aún no tengo terreno</h3>
+              <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
+                Te ayudamos a entender qué tipo de parcela necesitas, qué debes buscar, qué evitar y cómo valorar un terreno antes de comprarlo.
+              </p>
+            </div>
+            <div class="mt-auto">
+              <a href="configurador/configurador-v2.html" class="btn-outline-dark inline-block px-7 py-3 rounded-sm text-sm sm:text-base tracking-wide no-underline">
+                NECESITO ORIENTACIÓN
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         INSPIRACIÓN VISUAL (GALERÍA)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-cream" aria-labelledby="galeria-titulo">
+      <div class="max-w-5xl mx-auto">
+        <h2 id="galeria-titulo" class="font-serif text-3xl sm:text-4xl text-center text-soft-black mb-4 reveal">
+          Inspiración
+        </h2>
+        <p class="text-center text-warm-gray max-w-md mx-auto mb-16 text-sm sm:text-base leading-relaxed reveal reveal-delay-1">
+          Arquitectura que respira, materiales nobles y espacios que invitan a quedarse.
+        </p>
+
+        <!-- TODO: Sustituir imágenes de Unsplash por fotos reales de proyectos COR HOMES cuando estén disponibles -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div class="gallery-item md:col-span-2 md:row-span-2">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=85&w=800&auto=format&fit=crop"
+              alt="Salón mediterráneo con grandes ventanales, luz natural y materiales cálidos"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=85&w=600&auto=format&fit=crop"
+              alt="Cocina abierta con isla, madera natural y luz cenital"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600566753086-00f18f6b0050?q=85&w=600&auto=format&fit=crop"
+              alt="Terraza exterior con pérgola de madera y mobiliario discreto"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?q=85&w=600&auto=format&fit=crop"
+              alt="Fachada mediterránea con piedra, vegetación autóctona y luz dorada"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600585153490-76fb20a32601?q=85&w=600&auto=format&fit=crop"
+              alt="Detalle de interior con escalera de madera, doble altura y luz natural"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FILOSOFÍA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-[#F5F2EC]" aria-labelledby="filosofia-titulo">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 id="filosofia-titulo" class="font-serif text-3xl sm:text-4xl md:text-5xl text-soft-black mb-10 reveal leading-tight">
+          Menos improvisación.<br>
+          <span class="font-normal">Más coherencia.</span>
+        </h2>
+        <div class="text-left sm:text-center space-y-6 text-warm-gray leading-relaxed text-base sm:text-lg reveal reveal-delay-1">
+          <p>
+            Una casa no es solo una estructura. Es el lugar donde vas a despertarte cada mañana, donde tus hijos van a crecer, donde vas a refugiarte del mundo y compartir lo mejor de la vida.
+          </p>
+          <p>
+            Creemos en viviendas pensadas para vivir mejor. Casas con luz natural que cambia con las estaciones. Espacios que fluyen sin pasillos inútiles. Materiales que envejecen bien y consumen poca energía.
+          </p>
+          <p>
+            La eficiencia no es un argumento de venta: es sentido común. La sostenibilidad no es postureo: es construir con cabeza, pensando en lo que dejas a los que vienen.
+          </p>
+          <p>
+            No prometemos casas perfectas. Prometemos hogares con alma, proyectos coherentes y un proceso en el que no estarás solo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         CTA CONFIGURADOR
+         ═══════════════════════════════════════════════════════ -->
+    <section class="py-24 md:py-32 px-6 bg-cream" aria-labelledby="cta-config-titulo">
+      <div class="max-w-xl mx-auto text-center reveal">
+        <h2 id="cta-config-titulo" class="font-serif text-2xl sm:text-3xl md:text-4xl text-soft-black mb-4">
+          Empieza por imaginar tu hogar.
+        </h2>
+        <p class="text-warm-gray text-sm sm:text-base leading-relaxed mb-10 max-w-md mx-auto">
+          En pocos pasos podrás definir el modelo, el estilo y el punto de partida de tu proyecto.
+        </p>
+        <a href="configurador/configurador-v2.html" class="inline-flex items-center gap-2 px-10 py-4 sm:px-12 sm:py-4.5 rounded-full text-base sm:text-lg font-medium bg-verde text-white hover:bg-verde/90 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-verde/15 no-underline">
+          Comenzar estudio personalizado
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <p class="text-warm-gray text-xs mt-5">En menos de 3 minutos. Sin compromiso.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="py-16 px-6 bg-verde text-cream" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
+      <!-- Logo + claim -->
+      <div class="text-center md:text-left">
+        <a href="#" class="flex items-center gap-3 no-underline justify-center md:justify-start mb-3" aria-label="COR HOMES — Ir al inicio">
+          <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-7 md:h-9 w-auto brightness-0 invert" aria-hidden="true">
+          <span class="font-serif text-lg md:text-xl text-cream tracking-wide">COR HOMES</span>
+        </a>
+        <p class="text-arena text-sm italic">Casas con corazón</p>
+      </div>
+
+      <!-- Contacto -->
+      <div class="text-center md:text-right space-y-3">
+        <p class="text-arena text-sm">
+          <a href="mailto:hola@corhomes.com" class="text-arena hover:text-cream transition-colors duration-300 no-underline">hola@corhomes.com</a>
+        </p>
+        <div class="flex items-center justify-center md:justify-end gap-5 text-sm">
+          <a href="https://instagram.com/corhomes" target="_blank" rel="noopener" class="text-arena hover:text-cream transition-colors duration-300 no-underline" aria-label="Instagram">Instagram</a>
+          <a href="https://linkedin.com/company/corhomes" target="_blank" rel="noopener" class="text-arena hover:text-cream transition-colors duration-300 no-underline" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mt-12 pt-8 border-t border-warm-gray/30 text-center text-xs text-warm-gray">
+      <p>&copy; <span id="current-year"></span> COR HOMES. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Current year ────────────────────────────────────── */
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    /* ── Reveal on scroll ───────────────────────────────── */
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+    revealElements.forEach((el) => observer.observe(el));
+
+    /* ── Hero form submission → redirige al configurador ─ */
+    const heroForm = document.getElementById('hero-form');
+    if (heroForm) {
+      heroForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombreEl = document.getElementById('hero-nombre');
+        const emailEl = document.getElementById('hero-email');
+        const zonaEl = document.getElementById('hero-zona');
+        const terrenoEl = this.querySelector('input[name="tiene_terreno"]:checked');
+        let valid = true;
+        if (!nombreEl.value.trim()) { nombreEl.style.borderColor = '#c44'; valid = false; } else { nombreEl.style.borderColor = '#bbb29f'; }
+        if (!emailEl.value.trim() || !emailEl.checkValidity()) { emailEl.style.borderColor = '#c44'; valid = false; } else { emailEl.style.borderColor = '#bbb29f'; }
+        if (!terrenoEl) valid = false;
+        if (!valid) {
+          alert('Por favor, completa los campos obligatorios (Nombre, Email y si tienes terreno).');
+          return;
+        }
+        /* Guardar preentrada en localStorage */
+        localStorage.setItem('corHomesProject', JSON.stringify({
+          nombre: nombreEl.value.trim(),
+          email: emailEl.value.trim(),
+          ubicacion: zonaEl ? zonaEl.value.trim() : '',
+          terreno: terrenoEl.value,
+          source: 'landing-hero'
+        }));
+        /* Redirigir al configurador */
+        window.location.href = 'configurador/configurador-v2.html';
+      });
+    }
+
+    /* ── Smooth scroll para enlaces internos ───────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
