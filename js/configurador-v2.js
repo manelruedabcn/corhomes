@@ -36,6 +36,7 @@
     resumenLista:    $('#resumenLista'),
     resumenPanel:    $('#resumenPanel'),
     resumenPanelLista:$('#resumenPanelLista'),
+    btnWhatsappDrawer:$('#btnWhatsappDrawer'),
     toast:           $('#toast'),
   };
 
@@ -614,10 +615,17 @@ ${proyecto.terrenoDetalles || ''}
     if (dom.resumenLista) dom.resumenLista.innerHTML = html;
     if (dom.resumenPanelLista) dom.resumenPanelLista.innerHTML = html;
 
-    // WhatsApp link
+    // WhatsApp link (sidebar desktop)
     const msj = CONFIGURADOR.buildWhatsAppMessage(proyecto);
-    dom.btnWhatsapp.href = `https://wa.me/34652629991?text=${msj}`;
+    const waHref = `https://wa.me/34652629991?text=${msj}`;
+    dom.btnWhatsapp.href = waHref;
     dom.btnWhatsapp.style.display = completados > 0 ? 'inline-flex' : 'none';
+
+    // WhatsApp link (drawer mobile)
+    if (dom.btnWhatsappDrawer) {
+      dom.btnWhatsappDrawer.href = waHref;
+      dom.btnWhatsappDrawer.style.display = completados > 0 ? 'inline-flex' : 'none';
+    }
   }
 
   /* ════════════════════════════════════════════════════════
