@@ -211,20 +211,32 @@
     });
   }
 
-  // ── Botón volver ──
+  // ── Botones post-respuesta ──
   function botonVolver() {
     const wrap = document.createElement('div');
-    wrap.style.cssText = 'align-self:flex-start;margin-top:4px;animation:corMsgIn 0.35s ease';
-    const btn = document.createElement('button');
-    btn.textContent = '← Más preguntas';
-    btn.style.cssText = 'background:#3F5F4A;border:none;color:#fff;font-size:12px;cursor:pointer;font-family:inherit;padding:8px 18px;border-radius:20px;transition:all 0.2s;font-weight:500;box-shadow:0 2px 8px rgba(63,95,74,0.2);';
-    btn.onmouseenter = function () { btn.style.background = '#2D4A36'; btn.style.transform = 'translateY(-1px)'; };
-    btn.onmouseleave = function () { btn.style.background = '#3F5F4A'; btn.style.transform = 'none'; };
-    btn.onclick = function () {
+    wrap.style.cssText = 'align-self:flex-start;margin-top:6px;animation:corMsgIn 0.35s ease;display:flex;flex-direction:column;gap:6px;';
+
+    // ── Botón: Quiero mi propuesta ──
+    const btnCTA = document.createElement('button');
+    btnCTA.innerHTML = '🚀 Quiero mi propuesta';
+    btnCTA.style.cssText = 'background:linear-gradient(135deg,#3F5F4A,#4A7055);border:none;color:#fff;font-size:13px;cursor:pointer;font-family:inherit;padding:10px 20px;border-radius:20px;transition:all 0.25s;font-weight:600;box-shadow:0 3px 12px rgba(63,95,74,0.3);letter-spacing:0.3px;';
+    btnCTA.onmouseenter = function () { btnCTA.style.transform = 'translateY(-1px)'; btnCTA.style.boxShadow = '0 5px 18px rgba(63,95,74,0.4)'; };
+    btnCTA.onmouseleave = function () { btnCTA.style.transform = 'none'; btnCTA.style.boxShadow = '0 3px 12px rgba(63,95,74,0.3)'; };
+    btnCTA.onclick = function () { window.location.href = 'configurador/configurador-v2.html'; };
+    wrap.appendChild(btnCTA);
+
+    // ── Botón: Más preguntas ──
+    const btnQ = document.createElement('button');
+    btnQ.textContent = '← Más preguntas';
+    btnQ.style.cssText = 'background:transparent;border:1px solid #d6d3cc;color:#3d3d3a;font-size:12px;cursor:pointer;font-family:inherit;padding:7px 16px;border-radius:20px;transition:all 0.2s;font-weight:400;';
+    btnQ.onmouseenter = function () { btnQ.style.borderColor = '#3F5F4A'; btnQ.style.color = '#3F5F4A'; };
+    btnQ.onmouseleave = function () { btnQ.style.borderColor = '#d6d3cc'; btnQ.style.color = '#3d3d3a'; };
+    btnQ.onclick = function () {
       expandirQuick();
       qWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     };
-    wrap.appendChild(btn);
+    wrap.appendChild(btnQ);
+
     msgs.appendChild(wrap);
   }
 
