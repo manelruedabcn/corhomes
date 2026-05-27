@@ -239,10 +239,8 @@
       mostrarTyping(false);
       agregarMensaje(item.a, 'bot');
       scrollAlFinal();
-      // Pequeña pausa y luego mostrar toggle para expandir
-      setTimeout(function () {
-        toggleQuickReplies(false);
-      }, 800);
+      // Las opciones se quedan colapsadas para que se vea bien la respuesta
+      // El usuario puede expandirlas con el botón "Mostrar preguntas"
     }, delay);
   }
 
