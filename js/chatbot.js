@@ -239,8 +239,8 @@
       mostrarTyping(false);
       agregarMensaje(item.a, 'bot');
       scrollAlFinal();
-      // Las opciones se quedan colapsadas para que se vea bien la respuesta
-      // El usuario puede expandirlas con el botón "Mostrar preguntas"
+      // Reabrir opciones tras responder
+      toggleQuickReplies(false);
     }, delay);
   }
 
