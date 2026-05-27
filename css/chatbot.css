@@ -215,19 +215,16 @@
 .cor-chat-quick-wrap {
   flex-shrink: 0;
   overflow: hidden;
-  max-height: 400px;
-  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
   background: #F8F7F4;
   border-top: 1px solid #eae8e4;
   opacity: 1;
 }
 
 .cor-chat-quick-wrap.collapsed {
-  max-height: 0 !important;
   opacity: 0;
   border-top: none;
-  padding: 0;
 }
 
 .cor-chat-quick-toggle {

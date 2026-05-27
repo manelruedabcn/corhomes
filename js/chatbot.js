@@ -169,16 +169,21 @@
 
   // ── Quick replies toggle ──
   function toggleQuick() {
-    qWrap.classList.toggle('collapsed');
-    actualizarToggle();
+    if (qWrap.classList.contains('collapsed')) {
+      expandirQuick();
+    } else {
+      colapsarQuick();
+    }
   }
 
   function expandirQuick() {
     qWrap.classList.remove('collapsed');
+    qWrap.style.maxHeight = qReplies.scrollHeight + 60 + 'px';
     actualizarToggle();
   }
 
   function colapsarQuick() {
+    qWrap.style.maxHeight = '0px';
     qWrap.classList.add('collapsed');
     actualizarToggle();
   }
@@ -199,6 +204,10 @@
       btn.textContent = item.q;
       btn.addEventListener('click', function () { responder(i); });
       qReplies.appendChild(btn);
+    });
+    // Fijar altura inicial para que la transición funcione
+    requestAnimationFrame(function () {
+      qWrap.style.maxHeight = qReplies.scrollHeight + 60 + 'px';
     });
   }
 
