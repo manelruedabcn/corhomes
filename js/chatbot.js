@@ -218,6 +218,36 @@
     });
   }
 
+  /* ── Botón volver a preguntas ─────────────────────── */
+  function agregarBotonVolver() {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'align-self:flex-start;margin-top:2px;animation:corMsgIn 0.35s ease';
+
+    const btn = document.createElement('button');
+    btn.textContent = '← Más preguntas';
+    btn.style.cssText = `
+      background:none;border:none;color:#3F5F4A;font-size:12px;
+      cursor:pointer;font-family:inherit;padding:6px 12px;
+      border-radius:8px;transition:all 0.2s;font-weight:500;
+      display:inline-flex;align-items:center;gap:4px;
+    `;
+    btn.addEventListener('mouseenter', function () {
+      btn.style.background = 'rgba(63,95,74,0.08)';
+    });
+    btn.addEventListener('mouseleave', function () {
+      btn.style.background = 'none';
+    });
+    btn.addEventListener('click', function () {
+      // Expandir preguntas si están colapsadas
+      if (quickCollapsed) toggleQuickReplies(false);
+      // Scroll al área de preguntas
+      quickWrapEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    wrap.appendChild(btn);
+    messagesEl.appendChild(wrap);
+  }
+
   /* ── Responder ─────────────────────────────────────── */
   function responder(index) {
     const item = FAQ[index];
@@ -238,6 +268,7 @@
     setTimeout(function () {
       mostrarTyping(false);
       agregarMensaje(item.a, 'bot');
+      agregarBotonVolver();
       scrollAlFinal();
       // Reabrir opciones tras responder
       toggleQuickReplies(false);
