@@ -217,9 +217,9 @@
     wrap.style.cssText = 'align-self:flex-start;margin-top:4px;animation:corMsgIn 0.35s ease';
     const btn = document.createElement('button');
     btn.textContent = '← Más preguntas';
-    btn.style.cssText = 'background:none;border:none;color:#3F5F4A;font-size:12px;cursor:pointer;font-family:inherit;padding:6px 12px;border-radius:8px;transition:all 0.2s;font-weight:500;';
-    btn.onmouseenter = function () { btn.style.background = 'rgba(63,95,74,0.08)'; };
-    btn.onmouseleave = function () { btn.style.background = 'none'; };
+    btn.style.cssText = 'background:#3F5F4A;border:none;color:#fff;font-size:12px;cursor:pointer;font-family:inherit;padding:8px 18px;border-radius:20px;transition:all 0.2s;font-weight:500;box-shadow:0 2px 8px rgba(63,95,74,0.2);';
+    btn.onmouseenter = function () { btn.style.background = '#2D4A36'; btn.style.transform = 'translateY(-1px)'; };
+    btn.onmouseleave = function () { btn.style.background = '#3F5F4A'; btn.style.transform = 'none'; };
     btn.onclick = function () {
       expandirQuick();
       qWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -244,7 +244,7 @@
       agregar(item.a, 'bot');
       botonVolver();
       scrollFin();
-      expandirQuick();
+      // Las preguntas se quedan colapsadas. Usa "← Más preguntas" para volver.
     }, delay);
   }
 
