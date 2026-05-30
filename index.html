@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="COR HOMES — Casas con corazón. Recibe en 48h una propuesta técnico-económica con diseño, presupuesto y simulación de hipoteca autopromotor.">
-  <meta name="keywords" content="casas con corazón, autoconstrucción asistida, vivienda sostenible, construir casa, orientación personalizada, COR HOMES, arquitectura mediterránea, hipoteca autopromotor">
+  <meta name="description" content="Construye tu casa sin el caos. COR HOMES te entrega en 48h una propuesta técnico-económica personalizada: diseño, presupuesto desglosado y simulación de hipoteca autopromotor. Sin compromiso.">
+  <meta name="keywords" content="autopromoción vivienda unifamiliar, construir casa propia España, hipoteca autopromotor, autopromoción residencial, cuánto cuesta construir una casa, propuesta técnico constructiva, arquitecto autopromoción, casa eficiente bioclimática">
   <meta name="author" content="COR HOMES">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#7B8B6F">
+  <meta http-equiv="content-language" content="es-ES">
+  <meta name="geo.region" content="ES">
 
   <!-- Open Graph -->
   <meta property="og:title" content="COR HOMES — Casas con corazón">
@@ -14,6 +17,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cor.homes">
   <meta property="og:image" content="https://cor.homes/assets/images/hero-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vivienda mediterránea contemporánea construida con COR HOMES">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="COR HOMES">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +34,7 @@
   <!-- Favicon (isotipo sin fondo) -->
   <link rel="icon" type="image/png" href="assets/images/isotipo-cor-homes-sin-fondo.png">
 
-  <title>COR HOMES — Casas con corazón | Propuesta personalizada en 48h</title>
+  <title>Autopromoción residencial en 48h | COR HOMES — Casas con corazón</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -224,6 +232,136 @@
       display: inline-block;
     }
   </style>
+
+  <!-- Schema JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://cor.homes/#business",
+    "name": "COR HOMES",
+    "alternateName": "Cor Homes — Casas con corazón",
+    "description": "Servicio de acompañamiento en autopromoción residencial. Recibe en 48 horas una propuesta técnico-económica personalizada con diseño, presupuesto por gamas y simulación de hipoteca autopromotor.",
+    "url": "https://cor.homes",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cor.homes/assets/images/isotipo-cor-homes-sin-fondo.png",
+      "width": 400,
+      "height": 400
+    },
+    "image": "https://cor.homes/assets/images/hero-home.jpg",
+    "email": "hola@corhomes.com",
+    "sameAs": [
+      "https://instagram.com/corhomes",
+      "https://linkedin.com/company/corhomes"
+    ],
+    "areaServed": { "@type": "Country", "name": "España" },
+    "knowsLanguage": ["es", "ca"],
+    "priceRange": "€€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  }
+  </script>
+
+  <!-- Schema JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://cor.homes/#service",
+    "name": "Propuesta técnico-económica de autopromoción en 48h",
+    "description": "Análisis de parcela, diseño inicial personalizado, presupuesto desglosado en tres gamas, plan de pagos por fases, simulación de hipoteca autopromotor y conversación con un técnico. Todo en menos de 48 horas.",
+    "provider": { "@id": "https://cor.homes/#business" },
+    "serviceType": "Autopromoción residencial",
+    "areaServed": { "@type": "Country", "name": "España" },
+    "offers": {
+      "@type": "Offer",
+      "description": "Primera propuesta técnico-económica personalizada sin compromiso",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- Schema JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es la autopromoción residencial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La autopromoción residencial es el proceso por el que una persona construye su propia vivienda actuando como promotor. Permite mayor control sobre el diseño, los materiales y los costes, pero requiere coordinación técnica y legal. COR HOMES acompaña todo el proceso para que sea claro y libre de sorpresas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye la propuesta técnico-económica en 48h?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La propuesta incluye: análisis de parcela, diseño inicial personalizado, presupuesto desglosado en tres gamas de precio, plan de pagos por fases vinculado al avance de obra, simulación de hipoteca autopromotor y una conversación con un técnico que resuelve todas tus dudas en directo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona la hipoteca autopromotor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La hipoteca autopromotor financia la construcción por fases: el banco libera el dinero en tramos según el avance real de la obra. Durante la construcción solo pagas intereses sobre lo dispuesto; la cuota completa empieza cuando la casa está terminada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito tener terreno para empezar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No es imprescindible. Si ya tienes terreno, analizamos su potencial real, la normativa y la orientación. Si aún no tienes parcela, te ayudamos a entender qué tipo de terreno necesitas, qué debes buscar y cómo valorarlo antes de comprarlo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta construir una casa en España?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El coste varía según la zona, la superficie, los acabados y la calidad constructiva. En la propuesta personalizada que elaboramos en 48h recibes un presupuesto desglosado en tres gamas (básica, media y premium) para que puedas comparar con criterio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué zonas de España trabajáis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "COR HOMES opera a nivel nacional. Indica la zona donde quieres construir en el formulario y adaptamos el análisis a la normativa y al mercado local de esa comunidad autónoma."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://cor.homes/#website",
+    "url": "https://cor.homes",
+    "name": "COR HOMES",
+    "description": "Autopromoción residencial — Casas con corazón",
+    "inLanguage": "es-ES",
+    "publisher": { "@id": "https://cor.homes/#business" }
+  }
+  </script>
+
+  <!-- Preload hero image for LCP -->
+  <link rel="preload" as="image" href="/assets/images/hero-home.jpg" fetchpriority="high">
 </head>
 <body class="bg-cream text-soft-black">
 
@@ -233,7 +371,7 @@
   <nav class="bg-verde sticky top-0 z-50" role="navigation" aria-label="Navegación principal">
     <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16 md:h-20">
       <a href="#" class="nav-brand" aria-label="COR HOMES — Ir al inicio">
-        <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="nav-brand-icon" aria-hidden="true">
+        <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="nav-brand-icon" aria-hidden="true" loading="lazy">
         <span class="nav-brand-text">COR HOMES</span>
       </a>
       <a href="configurador/configurador-v2.html" class="inline-flex items-center gap-1.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm md:text-base font-medium bg-arena text-verde hover:bg-arena/90 transition-colors whitespace-nowrap">
@@ -380,7 +518,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-16">
           <!-- 1 -->
           <div class="reveal reveal-delay-1">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Análisis de parcela</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               Estudiamos orientación, normativa, topografía y potencial real. No trabajamos con suposiciones: trabajamos con datos.
@@ -388,7 +526,7 @@
           </div>
           <!-- 2 -->
           <div class="reveal reveal-delay-1">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Diseño inicial personalizado</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               Una primera distribución pensada para ti: tus metros, tu estilo de vida y tus prioridades. Nada de planos genéricos.
@@ -396,7 +534,7 @@
           </div>
           <!-- 3 -->
           <div class="reveal reveal-delay-2">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Presupuesto desglosado</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               Tres gamas de precio con partidas claras. Sabrás exactamente qué incluye cada euro desde el primer momento.
@@ -404,7 +542,7 @@
           </div>
           <!-- 4 -->
           <div class="reveal reveal-delay-2">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Plan de pagos por fases</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               Calendarización realista vinculada al avance de obra. Sin sorpresas de liquidez a mitad del proceso.
@@ -412,7 +550,7 @@
           </div>
           <!-- 5 -->
           <div class="reveal reveal-delay-3">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Simulación de hipoteca</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               Te orientamos sobre la hipoteca autopromotor: cómo funciona, qué necesitas y qué cuota mensual aproximada manejarías.
@@ -420,7 +558,7 @@
           </div>
           <!-- 6 -->
           <div class="reveal reveal-delay-3">
-            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true">
+            <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-5 w-auto mb-5 opacity-60" aria-hidden="true" loading="lazy">
             <h3 class="font-serif text-xl text-soft-black mb-3">Conversación con un técnico</h3>
             <p class="text-warm-gray leading-relaxed text-sm sm:text-base">
               No recibes solo un PDF. Hablas con una persona que te explica cada punto y resuelve tus dudas en directo.
@@ -820,7 +958,7 @@
       <!-- Logo + claim -->
       <div class="text-center md:text-left">
         <a href="#" class="flex items-center gap-3 no-underline justify-center md:justify-start mb-3" aria-label="COR HOMES — Ir al inicio">
-          <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-7 md:h-9 w-auto brightness-0 invert" aria-hidden="true">
+          <img src="assets/images/isotipo-cor-homes-sin-fondo.png" alt="" class="h-7 md:h-9 w-auto brightness-0 invert" aria-hidden="true" loading="lazy">
           <span class="font-serif text-lg md:text-xl text-cream tracking-wide">COR HOMES</span>
         </a>
         <p class="text-arena text-sm italic">Casas con corazón</p>
