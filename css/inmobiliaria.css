@@ -12,3 +12,5 @@ header .brand-symbol{filter:brightness(.45) sepia(.18)}
 /* Keep the symbol and full name side by side at every screen size. */
 .brand{flex-direction:row;flex-wrap:nowrap;white-space:nowrap}
 .brand .brand-name{display:inline-block;white-space:nowrap}
+
+.brand .brand-descriptor{display:block;font:9px/1.4 Inter,Arial,sans-serif;letter-spacing:.23em;margin-top:7px;text-align:left}
