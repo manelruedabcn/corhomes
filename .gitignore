@@ -5,3 +5,6 @@
 .env
 data/*
 !data/.gitkeep
+
+# Hosted Sites checkout has its own source repository.
+sites/
