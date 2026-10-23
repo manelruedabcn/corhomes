@@ -1,0 +1,1 @@
+{"name":"cor-homes","private":true,"type":"module","scripts":{"start":"node --experimental-sqlite server/app.mjs","test":"node --experimental-sqlite --test server/*.test.mjs"},"engines":{"node":">=22.15"}}

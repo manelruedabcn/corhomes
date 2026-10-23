@@ -48,7 +48,7 @@
     },
     {
       q: '¿Cómo empiezo?',
-      a: 'Haz clic en "Comenzar" y rellena el formulario. En 3 minutos tu estudio está en marcha. También por WhatsApp o hola@corhomes.com'
+      a: 'Haz clic en "Comenzar" y rellena el formulario. En 3 minutos tu estudio está en marcha. También por WhatsApp o hola@cor.homes'
     },
     {
       q: '¿Qué garantías tengo?',
