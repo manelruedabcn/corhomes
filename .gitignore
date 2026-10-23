@@ -8,3 +8,5 @@ data/*
 
 # Hosted Sites checkout has its own source repository.
 sites/
+
+artifacts/

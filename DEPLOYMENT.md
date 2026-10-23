@@ -4,7 +4,7 @@ La versión alojada en Sites se prepara en `sites/cor-homes`, con repositorio in
 
 URL prevista: https://cor-homes-real-estate.deepbasil20.chatgpt.site
 
-Para esta revisión se conserva acceso privado del propietario. El panel usa la identidad proporcionada por Sites, y la base de datos D1 mantiene inmuebles y consultas. El dominio cor.homes conserva su alojamiento actual.
+La web es pública y está conectada a https://cor.homes y https://www.cor.homes. El panel exige la identidad del propietario mediante ADMIN_EMAIL. La base de datos D1 mantiene inmuebles y consultas. La autopromoción es una sección interna y conserva el configurador original.
 
 La copia alojada incluye `app/server`, `app/css` y los recursos necesarios. Después de cambios en el proyecto original, sincronizar esos archivos, ejecutar `scripts/generate-worker.py` y `scripts/test-worker.mjs`, y publicar mediante el flujo de Sites. El generador adapta el renderizado del servidor local a Workers y sustituye SQLite por D1. Las migraciones alojadas son independientes de la base local; no se ha importado inventario ni contactos.
 

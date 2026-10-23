@@ -27,3 +27,7 @@ Añadir primero las validaciones TXT. Tras el cambio de los registros de tráfic
 - https://cor.homes/configurador/configurador-v2.html — motor original de configuración.
 
 El cambio no está completado hasta verificar los registros públicos y que cor.homes sirve la web nueva con HTTPS.
+
+## Estado comprobado — 23 de octubre de 2026
+
+Cambio realizado en DonDominio. cor.homes y www.cor.homes figuran activos en Sites, con certificado HTTPS activo. Ambos dominios responden 200 y muestran la nueva propuesta de COR HOMES. Verificados los accesos a compra, autopromoción, configurador e inglés; API administrativa rechaza visitantes anónimos. Correo y otros subdominios conservados. La web es pública y el panel está restringido al propietario.
