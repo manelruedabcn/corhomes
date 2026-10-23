@@ -21,3 +21,9 @@ La portada `index.html` sirve como presentación estática; el catálogo, contac
 ## Verificación
 
 `npm test` comprueba el circuito de autenticación, publicación, edición, protección de borradores, SEO y guardado de consultas usando una base temporal.
+
+## Fichas off market
+
+Selecciona **Off market · enlace privado** en el estado del inmueble. Se genera un enlace aleatorio de 256 bits en `/off-market/<token>` que puedes abrir o copiar desde el panel. Estas fichas no aparecen en portada, búsquedas, catálogo, sitemap ni en su antigua dirección pública. Se envían con `noindex`, `noarchive`, `nosnippet`, caché desactivada y política de referencia que evita transmitir el enlace a sitios externos. No incluyen metadatos sociales con datos de la propiedad ni datos estructurados.
+
+El enlace permite acceder a cualquiera que lo tenga: no es una invitación ligada a una identidad. **Renovar enlace** invalida el anterior; guardar en **Borrador** retira el acceso. Volver a activar off market genera un enlace distinto. Las consultas de una ficha privada requieren el token válido y aparecen en el panel con el identificador del inmueble. Las fotos en servicios externos conservan la política de acceso del proveedor; usa imágenes autorizadas y evita incluir direcciones exactas o datos confidenciales. Un inmueble que antes fue público puede conservar copias previas en buscadores o redes; cambiarlo a off market no elimina esas copias.
