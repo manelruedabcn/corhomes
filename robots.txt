@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
+Disallow: /admin
+Disallow: /api/
 Sitemap: https://cor.homes/sitemap.xml
