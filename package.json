@@ -1,0 +1,14 @@
+{
+  "name": "cor-homes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "validate": "node scripts/validate-artifact.mjs",
+    "start": "node --experimental-sqlite app/server/app.mjs",
+    "test": "node --experimental-sqlite scripts/test-worker.mjs"
+  },
+  "engines": {
+    "node": ">=22.15"
+  }
+}
