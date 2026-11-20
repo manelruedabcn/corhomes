@@ -1,7 +1,12 @@
-dist/
-site.tar.gz
 
-.env
-.env.*
-app/data/
 *.sqlite*
+.env
+.env*
+.env.*
+.vercel
+app/data/
+data/
+dist/
+node_modules/
+public/
+site.tar.gz

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/vercel-build.mjs",
+  "outputDirectory": "public",
+  "installCommand": "echo 'no dependencies'",
+  "functions": {
+    "api/index.mjs": { "includeFiles": "app/server/**", "maxDuration": 10 }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
+  "headers": [
+    { "source": "/fonts/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
+    { "source": "/configurador/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] },
+    { "source": "/css/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+    { "source": "/js/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] }
+  ]
+}
