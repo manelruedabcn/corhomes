@@ -78,3 +78,4 @@ textarea{resize:vertical}
 .status{margin:0;font-size:15px}
 .thanks{text-align:center;padding:96px 0 160px}
 .hidden{display:none}
+.photo{width:100%;object-fit:cover;border-radius:4px;display:block;background:#E6DCCB}
