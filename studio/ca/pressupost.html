@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sol·licitud de pressupost · COR STUDIO</title>
+<meta name="description" content="Explica'ns el teu projecte de reforma, cuina o interiorisme i et donem una primera valoració.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="es" href="https://www.studio.cor.homes/presupuesto"><link rel="alternate" hreflang="ca" href="https://www.studio.cor.homes/ca/pressupost"><link rel="alternate" hreflang="en" href="https://www.studio.cor.homes/en/quote">
+<link rel="icon" href="../logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<script src="../config.js"></script>
+</head>
+<body>
+
+<header class="wrap narrow site-header">
+<a class="logo" href="./" aria-label="COR STUDIO, inicio"><img src="../logo/isotipo-cor-studio.svg" alt="" width="44" height="44"><b>COR STUDIO</b><small>BY COR HOMES</small></a>
+<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center"><span class="langs" style="display:flex;gap:10px;font-size:14px;color:var(--soft)"><a href="../presupuesto.html" hreflang="es" lang="es" style="text-decoration:none">ES</a> · <span aria-current="true" style="font-weight:600">CA</span> · <a href="../en/quote.html" hreflang="en" lang="en" style="text-decoration:none">EN</a></span><a href="./" style="font-size:15px">← Tornar al web</a></div>
+</header>
+
+<main class="wrap narrow">
+
+<div id="thanks" class="thanks hidden">
+<p class="eyebrow">SOL·LICITUD REBUDA</p>
+<h1 class="serif" style="margin:0;font-size:48px;line-height:1.1">Gràcies, ja tenim el teu projecte.</h1>
+<p class="lead" style="margin:24px 0 40px">El revisem i et contactem en [TERMINI] per concertar una visita o una videotrucada.</p>
+<a class="btn" href="pressupost.html">Enviar una altra sol·licitud</a>
+</div>
+
+<div id="formwrap" style="padding:24px 0 120px">
+<p class="eyebrow" style="margin-bottom:16px">SOL·LICITUD DE PRESSUPOST</p>
+<h1 class="serif" style="margin:0;font-size:clamp(36px,5vw,56px);line-height:1.08">Explica'ns el teu projecte</h1>
+<p class="lead" style="margin:20px 0 8px;max-width:640px">Uns minuts ara ens estalvien moltes trucades després. Amb això et donem una primera valoració honesta.</p>
+<p class="en" style="margin:0 0 48px">Español, English — omple'l en l'idioma que prefereixis.</p>
+
+<form id="presupuesto" class="form" novalidate>
+<input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+
+<fieldset>
+<legend>1. Què vols fer?</legend>
+<p class="hint">Pots marcar diverses opcions.</p>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="tipo" value="Cuina"><span>Cuina</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Bany"><span>Bany</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Decoració / interiorisme"><span>Decoració / interiorisme</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Reforma integral"><span>Reforma integral</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Terres i fusteria"><span>Terres i fusteria</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Altres"><span>Altres</span></label>
+</div>
+</fieldset>
+
+<fieldset class="cols">
+<legend>2. L'immoble</legend>
+<label>Tipus d'habitatge<select name="vivienda"><option>Pis</option><option>Casa / xalet</option><option>Àtic</option><option>Local o oficina</option><option>Altres</option></select></label>
+<label>Municipi<input type="text" name="municipio" placeholder="Ex. Girona, Lloret de Mar…"></label>
+<label>Superfície aproximada (m²)<input type="number" name="m2" min="0"></label>
+<label>Ús de l'habitatge<select name="uso"><option>Habitatge habitual</option><option>Segona residència</option><option>Inversió / lloguer</option><option>L'acabo de comprar</option></select></label>
+</fieldset>
+
+<fieldset>
+<legend>3. Termini i pressupost</legend>
+<p class="q">Quan t'agradaria començar?</p>
+<div class="chips">
+<label class="chip"><input type="radio" name="plazo" value="Com més aviat millor"><span>Com més aviat millor</span></label>
+<label class="chip"><input type="radio" name="plazo" value="D'aquí a 1–3 mesos"><span>D'aquí a 1–3 mesos</span></label>
+<label class="chip"><input type="radio" name="plazo" value="D'aquí a 3–6 mesos"><span>D'aquí a 3–6 mesos</span></label>
+<label class="chip"><input type="radio" name="plazo" value="Encara no ho sé"><span>Encara no ho sé</span></label>
+</div>
+<p class="q" style="margin-top:8px">Pressupost orientatiu</p>
+<div class="chips">
+<label class="chip"><input type="radio" name="presupuesto" value="Menys de 15.000 €"><span>Menys de 15.000 €</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="15.000–40.000 €"><span>15.000–40.000 €</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="40.000–80.000 €"><span>40.000–80.000 €</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="Més de 80.000 €"><span>Més de 80.000 €</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="Necessito orientació"><span>Necessito orientació</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>4. La teva idea</legend>
+<label style="clear:both">Descriu-nos què tens al cap<textarea name="mensaje" rows="5" required maxlength="4000" placeholder="Què t'agrada, què no funciona avui, quin estil busques…"></textarea></label>
+<p class="hint">Tens fotos o plànols? Envia'ns-els després per email o WhatsApp responent al nostre primer missatge.</p>
+</fieldset>
+
+<fieldset class="cols">
+<legend>5. Les teves dades</legend>
+<label>Nom<input type="text" name="name" required maxlength="120" autocomplete="name"></label>
+<label>Email<input type="email" name="email" required maxlength="200" autocomplete="email"></label>
+<label>Telèfon / WhatsApp<input type="tel" name="telefono" maxlength="40" autocomplete="tel"></label>
+<label>Idioma preferit<select name="idioma"><option>Español</option><option selected>Català</option><option>English</option><option>Français</option><option>Deutsch</option></select></label>
+<label class="full">Com ens has conegut?<select name="origen"><option>Recomanació</option><option>Instagram</option><option>Google</option><option>COR HOMES</option><option>Altres</option></select></label>
+<label class="check full"><input type="checkbox" name="consent" required><span>Accepto que COR STUDIO utilitzi aquestes dades només per respondre la meva sol·licitud. Puc demanar-ne l'eliminació en qualsevol moment.</span></label>
+</fieldset>
+
+<div class="submit">
+<button class="btn btn-primary" type="submit" style="font-size:17px;padding:18px 36px">Enviar sol·licitud</button>
+<span style="font-size:14px;color:var(--soft)">Sense compromís. Et responem en [TERMINI].</span>
+</div>
+<p id="status" class="status" role="status"></p>
+</form>
+</div>
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('presupuesto');
+  var status = document.getElementById('status');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var key = window.COR_STUDIO_WEB3FORMS_KEY || '';
+    if (!key) { status.textContent = 'Formulari encara sense configurar.'; return; }
+    var fd = new FormData(form);
+    var tipos = fd.getAll('tipo').join(', ') || '-';
+    var data = {
+      access_key: key,
+      subject: 'Nueva solicitud COR STUDIO · ' + tipos,
+      from_name: 'Web COR STUDIO',
+      botcheck: fd.get('botcheck') ? true : '',
+      name: fd.get('name'), email: fd.get('email'), replyto: fd.get('email'),
+      'Teléfono': fd.get('telefono') || '-',
+      'Proyecto': tipos,
+      'Vivienda': fd.get('vivienda'), 'Municipio': fd.get('municipio') || '-',
+      'Superficie (m²)': fd.get('m2') || '-', 'Uso': fd.get('uso'),
+      'Plazo': fd.get('plazo') || '-', 'Presupuesto': fd.get('presupuesto') || '-',
+      'Idioma': fd.get('idioma'), 'Web': document.documentElement.lang.toUpperCase(), 'Origen': fd.get('origen'),
+      message: fd.get('mensaje')
+    };
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; status.textContent = 'Enviant…';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error();
+      document.getElementById('formwrap').classList.add('hidden');
+      document.getElementById('thanks').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    } catch (err) {
+      status.textContent = 'No s\'ha pogut enviar. Torna-ho a provar o escriu-nos per email.';
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>

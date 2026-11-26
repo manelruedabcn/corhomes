@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a quote · COR STUDIO</title>
+<meta name="description" content="Tell us about your renovation, kitchen or interior project and we'll give you an initial assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="es" href="https://www.studio.cor.homes/presupuesto"><link rel="alternate" hreflang="ca" href="https://www.studio.cor.homes/ca/pressupost"><link rel="alternate" hreflang="en" href="https://www.studio.cor.homes/en/quote">
+<link rel="icon" href="../logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<script src="../config.js"></script>
+</head>
+<body>
+
+<header class="wrap narrow site-header">
+<a class="logo" href="./" aria-label="COR STUDIO, inicio"><img src="../logo/isotipo-cor-studio.svg" alt="" width="44" height="44"><b>COR STUDIO</b><small>BY COR HOMES</small></a>
+<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center"><span class="langs" style="display:flex;gap:10px;font-size:14px;color:var(--soft)"><a href="../presupuesto.html" hreflang="es" lang="es" style="text-decoration:none">ES</a> · <a href="../ca/pressupost.html" hreflang="ca" lang="ca" style="text-decoration:none">CA</a> · <span aria-current="true" style="font-weight:600">EN</span></span><a href="./" style="font-size:15px">← Back to the site</a></div>
+</header>
+
+<main class="wrap narrow">
+
+<div id="thanks" class="thanks hidden">
+<p class="eyebrow">REQUEST RECEIVED</p>
+<h1 class="serif" style="margin:0;font-size:48px;line-height:1.1">Thank you, we've got your project.</h1>
+<p class="lead" style="margin:24px 0 40px">We'll review it and contact you within [TIMEFRAME] to arrange a visit or a video call.</p>
+<a class="btn" href="quote.html">Send another request</a>
+</div>
+
+<div id="formwrap" style="padding:24px 0 120px">
+<p class="eyebrow" style="margin-bottom:16px">REQUEST A QUOTE</p>
+<h1 class="serif" style="margin:0;font-size:clamp(36px,5vw,56px);line-height:1.08">Tell us about your project</h1>
+<p class="lead" style="margin:20px 0 8px;max-width:640px">A few minutes now saves a lot of calls later. It lets us give you an honest first assessment.</p>
+<p class="en" style="margin:0 0 48px">Español, Català — fill it in the language you prefer.</p>
+
+<form id="presupuesto" class="form" novalidate>
+<input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+
+<fieldset>
+<legend>1. What would you like to do?</legend>
+<p class="hint">You can choose more than one.</p>
+<div class="chips">
+<label class="chip"><input type="checkbox" name="tipo" value="Kitchen"><span>Kitchen</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Bathroom"><span>Bathroom</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Decoration / interior design"><span>Decoration / interior design</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Full renovation"><span>Full renovation</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Flooring & carpentry"><span>Flooring &amp; carpentry</span></label>
+<label class="chip"><input type="checkbox" name="tipo" value="Other"><span>Other</span></label>
+</div>
+</fieldset>
+
+<fieldset class="cols">
+<legend>2. The property</legend>
+<label>Type of property<select name="vivienda"><option>Apartment</option><option>House / villa</option><option>Penthouse</option><option>Commercial or office</option><option>Other</option></select></label>
+<label>Town<input type="text" name="municipio" placeholder="E.g. Girona, Lloret de Mar…"></label>
+<label>Approximate size (m²)<input type="number" name="m2" min="0"></label>
+<label>How you use it<select name="uso"><option>Main home</option><option>Second home</option><option>Investment / rental</option><option>Just bought it</option></select></label>
+</fieldset>
+
+<fieldset>
+<legend>3. Timing and budget</legend>
+<p class="q">When would you like to start?</p>
+<div class="chips">
+<label class="chip"><input type="radio" name="plazo" value="As soon as possible"><span>As soon as possible</span></label>
+<label class="chip"><input type="radio" name="plazo" value="In 1–3 months"><span>In 1–3 months</span></label>
+<label class="chip"><input type="radio" name="plazo" value="In 3–6 months"><span>In 3–6 months</span></label>
+<label class="chip"><input type="radio" name="plazo" value="Not sure yet"><span>Not sure yet</span></label>
+</div>
+<p class="q" style="margin-top:8px">Approximate budget</p>
+<div class="chips">
+<label class="chip"><input type="radio" name="presupuesto" value="Under €15,000"><span>Under €15,000</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="€15,000–40,000"><span>€15,000–40,000</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="€40,000–80,000"><span>€40,000–80,000</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="Over €80,000"><span>Over €80,000</span></label>
+<label class="chip"><input type="radio" name="presupuesto" value="I need guidance"><span>I need guidance</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>4. Your idea</legend>
+<label style="clear:both">Describe what you have in mind<textarea name="mensaje" rows="5" required maxlength="4000" placeholder="What you like, what doesn't work today, the style you're after…"></textarea></label>
+<p class="hint">Have photos or plans? Send them later by email or WhatsApp in reply to our first message.</p>
+</fieldset>
+
+<fieldset class="cols">
+<legend>5. Your details</legend>
+<label>Name<input type="text" name="name" required maxlength="120" autocomplete="name"></label>
+<label>Email<input type="email" name="email" required maxlength="200" autocomplete="email"></label>
+<label>Phone / WhatsApp<input type="tel" name="telefono" maxlength="40" autocomplete="tel"></label>
+<label>Preferred language<select name="idioma"><option>Español</option><option>Català</option><option selected>English</option><option>Français</option><option>Deutsch</option></select></label>
+<label class="full">How did you hear about us?<select name="origen"><option>Recommendation</option><option>Instagram</option><option>Google</option><option>COR HOMES</option><option>Other</option></select></label>
+<label class="check full"><input type="checkbox" name="consent" required><span>I agree that COR STUDIO may use these details only to respond to my request. I can ask for them to be deleted at any time.</span></label>
+</fieldset>
+
+<div class="submit">
+<button class="btn btn-primary" type="submit" style="font-size:17px;padding:18px 36px">Send request</button>
+<span style="font-size:14px;color:var(--soft)">No obligation. We reply within [TIMEFRAME].</span>
+</div>
+<p id="status" class="status" role="status"></p>
+</form>
+</div>
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('presupuesto');
+  var status = document.getElementById('status');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var key = window.COR_STUDIO_WEB3FORMS_KEY || '';
+    if (!key) { status.textContent = 'Form not configured yet.'; return; }
+    var fd = new FormData(form);
+    var tipos = fd.getAll('tipo').join(', ') || '-';
+    var data = {
+      access_key: key,
+      subject: 'Nueva solicitud COR STUDIO · ' + tipos,
+      from_name: 'Web COR STUDIO',
+      botcheck: fd.get('botcheck') ? true : '',
+      name: fd.get('name'), email: fd.get('email'), replyto: fd.get('email'),
+      'Teléfono': fd.get('telefono') || '-',
+      'Proyecto': tipos,
+      'Vivienda': fd.get('vivienda'), 'Municipio': fd.get('municipio') || '-',
+      'Superficie (m²)': fd.get('m2') || '-', 'Uso': fd.get('uso'),
+      'Plazo': fd.get('plazo') || '-', 'Presupuesto': fd.get('presupuesto') || '-',
+      'Idioma': fd.get('idioma'), 'Web': document.documentElement.lang.toUpperCase(), 'Origen': fd.get('origen'),
+      message: fd.get('mensaje')
+    };
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; status.textContent = 'Sending…';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error();
+      document.getElementById('formwrap').classList.add('hidden');
+      document.getElementById('thanks').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    } catch (err) {
+      status.textContent = 'We could not send it. Please try again or email us.';
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
