@@ -85,3 +85,25 @@ textarea{resize:vertical}
 .pain h3{margin:0 0 10px;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.2}
 .pain p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
 .dark .pillars{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px;font-size:16px;line-height:1.55}
+/* Cabecera verde */
+.topbar{background:#3F5F4A;color:#F4EFE7}
+.topbar a{color:#F4EFE7}.topbar a:hover{color:#fff;opacity:.85}
+.topbar .site-header{padding-top:18px;padding-bottom:18px}
+.topbar .logo b{color:#F4EFE7;white-space:nowrap}
+.topbar .logo small{color:#C9D3C6}
+.topbar .langs{color:#C9D3C6!important}
+.topbar .btn-dark{background:#F4EFE7;border-color:#F4EFE7;color:#1E2A2C}
+.topbar .btn-dark:hover{color:#1E2A2C;background:#fff}
+@media (max-width:720px){
+ .site-header{flex-wrap:nowrap}
+ .topbar .site-header{padding-top:14px;padding-bottom:14px}
+ .logo img{width:34px;height:34px}
+ .logo b{font-size:20px}
+ .logo small{display:none}
+ .nav{gap:14px;flex-wrap:nowrap}
+ .nav>a:not(.btn){display:none}
+ .nav .btn-dark{padding:9px 14px;font-size:14px;white-space:nowrap}
+ .langs{font-size:13px!important;gap:6px!important}
+ .wrap{padding-left:20px;padding-right:20px}
+}
+@media (max-width:420px){.site-header{flex-wrap:wrap;row-gap:12px}.nav{width:100%;justify-content:space-between}}
