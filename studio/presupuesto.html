@@ -24,7 +24,7 @@
 <div id="thanks" class="thanks hidden">
 <p class="eyebrow">SOLICITUD RECIBIDA</p>
 <h1 class="serif" style="margin:0;font-size:48px;line-height:1.1">Gracias, ya tenemos tu proyecto.</h1>
-<p class="lead" style="margin:24px 0 40px">Lo revisamos y te contactamos en [PLAZO] para concertar una visita o una videollamada.</p>
+<p class="lead" style="margin:24px 0 40px">Lo revisamos y te contactamos en 48 horas para concertar una visita o una videollamada.</p>
 <a class="btn" href="presupuesto.html">Enviar otra solicitud</a>
 </div>
 
@@ -95,7 +95,7 @@
 
 <div class="submit">
 <button class="btn btn-primary" type="submit" style="font-size:17px;padding:18px 36px">Enviar solicitud</button>
-<span style="font-size:14px;color:var(--soft)">Sin compromiso. Te respondemos en [PLAZO].</span>
+<span style="font-size:14px;color:var(--soft)">Sin compromiso. Te respondemos en 48 horas.</span>
 </div>
 <p id="status" class="status" role="status"></p>
 </form>
@@ -139,7 +139,7 @@
       document.getElementById('thanks').classList.remove('hidden');
       window.scrollTo(0, 0);
     } catch (err) {
-      status.textContent = 'No se ha podido enviar. Inténtalo de nuevo o escríbenos por email.';
+      status.textContent = 'No se ha podido enviar. Inténtalo de nuevo o escríbenos a studio@cor.homes.';
     } finally { btn.disabled = false; }
   });
 })();
