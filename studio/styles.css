@@ -106,4 +106,4 @@ textarea{resize:vertical}
  .langs{font-size:13px!important;gap:6px!important}
  .wrap{padding-left:20px;padding-right:20px}
 }
-@media (max-width:420px){.langs{display:none!important}}
+@media (max-width:420px){.site-header{flex-wrap:wrap;row-gap:12px}.nav{width:100%;justify-content:space-between}}
