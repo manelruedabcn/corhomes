@@ -24,7 +24,7 @@
 <div id="thanks" class="thanks hidden">
 <p class="eyebrow">REQUEST RECEIVED</p>
 <h1 class="serif" style="margin:0;font-size:48px;line-height:1.1">Thank you, we've got your project.</h1>
-<p class="lead" style="margin:24px 0 40px">We'll review it and contact you within [TIMEFRAME] to arrange a visit or a video call.</p>
+<p class="lead" style="margin:24px 0 40px">We'll review it and contact you within 48 hours to arrange a visit or a video call.</p>
 <a class="btn" href="quote.html">Send another request</a>
 </div>
 
@@ -95,7 +95,7 @@
 
 <div class="submit">
 <button class="btn btn-primary" type="submit" style="font-size:17px;padding:18px 36px">Send request</button>
-<span style="font-size:14px;color:var(--soft)">No obligation. We reply within [TIMEFRAME].</span>
+<span style="font-size:14px;color:var(--soft)">No obligation. We reply within 48 hours.</span>
 </div>
 <p id="status" class="status" role="status"></p>
 </form>
@@ -139,7 +139,7 @@
       document.getElementById('thanks').classList.remove('hidden');
       window.scrollTo(0, 0);
     } catch (err) {
-      status.textContent = 'We could not send it. Please try again or email us.';
+      status.textContent = 'We could not send it. Please try again or email studio@cor.homes.';
     } finally { btn.disabled = false; }
   });
 })();
