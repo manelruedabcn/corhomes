@@ -107,3 +107,12 @@ textarea{resize:vertical}
  .wrap{padding-left:20px;padding-right:20px}
 }
 @media (max-width:420px){.site-header{flex-wrap:wrap;row-gap:12px}.nav{width:100%;justify-content:space-between}}
+/* Móvil: logo grande y centrado */
+@media (max-width:720px){
+ .site-header{flex-wrap:wrap;justify-content:center;row-gap:16px}
+ .logo{width:100%;justify-content:center;gap:14px}
+ .logo img{width:52px;height:52px}
+ .logo b{font-size:30px;letter-spacing:.07em}
+ .nav{width:100%;justify-content:space-between}
+ .topbar .site-header{padding-top:20px;padding-bottom:16px}
+}
