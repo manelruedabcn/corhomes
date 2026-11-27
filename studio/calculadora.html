@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#4F5E4C">
 <link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<script src="config.js"></script>
 <link rel="apple-touch-icon" href="https://www.studio.cor.homes/logo/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -54,7 +55,7 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--green);flex:none}
 .seg button{min-height:40px;padding:6px 12px;font-size:14px}
 .seg button[aria-pressed=true]{background:var(--green);color:#F5F0E6;border-color:var(--green)}
 .hint{font-size:13px;color:var(--soft);grid-column:1/-1;margin:0}
-aside{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+aside{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .res{background:var(--green);color:#F5F0E6;padding:20px 22px}
 .res .lbl{font-size:14px;color:#DDD5BD}
 .big{font-size:clamp(28px,3vw,36px);line-height:1.1;margin:4px 0}.big span{white-space:nowrap}
@@ -79,6 +80,17 @@ aside{position:sticky;top:16px;background:var(--card);border:1px solid var(--lin
 .vs ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
 .aprox{background:#DDD5BD;color:#2B2A26;padding:10px 22px;font-size:13.5px;line-height:1.45}
 .ahorro{margin:0;padding:12px 22px 0;font-size:14px}
+.lead{border-top:1px solid var(--line);padding:16px 22px 20px;display:grid;gap:10px}
+.lead h3{margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:20px}
+.lead p{margin:0;font-size:13.5px;color:var(--soft)}
+.lead input[type=text],.lead input[type=email],.lead input[type=tel]{font:inherit;font-size:16px;min-height:44px;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.lead .ck{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink)}
+.lead .ck input{margin-top:1px}
+.hp{position:absolute;left:-9999px}
+.ok{background:var(--sand);border-radius:6px;padding:12px 14px;font-size:14px;color:var(--ink)}
+.waf{position:fixed;right:18px;bottom:18px;z-index:6;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.waf svg{width:32px;height:32px;fill:#fff}
+@media(max-width:900px){.waf{bottom:78px;right:14px}}
 .legal{font-size:13px;color:var(--soft);max-width:1240px;margin:0 auto;padding:0 max(5vw,16px) 40px}
 details.tar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin-top:6px}
 details.tar summary{cursor:pointer;font-weight:600;min-height:32px}
@@ -135,13 +147,27 @@ td.n{white-space:nowrap}
 <p class="ahorro">Como project manager negociamos los productos y los gremios por ti, para que el precio final sea más económico.</p>
 <div class="rows" id="rows"></div>
 <div class="cta">
-<button type="button" class="pri" id="copy">Copiar resumen</button>
-<a class="btn" id="wa" href="#" style="text-align:center;text-decoration:none">Pedir visita y presupuesto por WhatsApp</a>
-<p>WhatsApp 671 410 508 · studio@cor.homes · respondemos en 48 h</p>
+<a class="btn pri" href="#recibir" style="text-align:center;text-decoration:none">Recibir este cálculo</a>
+<button type="button" id="copy">Copiar resumen</button>
 <p id="msg" role="status"></p>
 </div>
+<form class="lead" id="recibir" novalidate>
+<h3>Recibe tu cálculo</h3>
+<p>Te lo enviamos por WhatsApp o por email. Si quieres, te llamamos para visitar la obra y darte un presupuesto válido.</p>
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="f">Recibirlo por<div class="seg" role="group" aria-label="Recibirlo por"><button type="button" data-canal="whatsapp" aria-pressed="true">WhatsApp</button><button type="button" data-canal="email" aria-pressed="false">Email</button></div></div>
+<label class="f">Nombre<input type="text" name="nombre" required maxlength="120" autocomplete="name"></label>
+<label class="f" id="fTel">Teléfono / WhatsApp<input type="tel" name="telefono" maxlength="40" autocomplete="tel" required></label>
+<label class="f" id="fMail">Email<input type="email" name="email" maxlength="200" autocomplete="email"></label>
+<label class="f">Municipio de la obra (opcional)<input type="text" name="municipio" maxlength="120"></label>
+<label class="ck"><input type="checkbox" name="visita" checked>Quiero que me llaméis para visitar la obra</label>
+<label class="ck"><input type="checkbox" name="consent" required>Acepto que COR STUDIO guarde estos datos para enviarme el cálculo y contactar conmigo sobre mi reforma. Puedo pedir que los borren en cualquier momento escribiendo a studio@cor.homes.</label>
+<button type="submit" class="pri" id="enviar">Enviarme el cálculo</button>
+<p id="lmsg" role="status"></p>
+</form>
 </aside>
 </main>
+<a class="waf" id="waf" href="https://wa.me/34671410508" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.45-5.02c0-5.2 4.24-9.44 9.46-9.44 2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.77 6.68c0 5.21-4.24 9.44-9.46 9.44zm8.05-17.5A11.32 11.32 0 0 0 12.05.67C5.78.67.67 5.78.67 12.05c0 2 .52 3.96 1.52 5.69L.57 23.33l5.72-1.5a11.36 11.36 0 0 0 5.75 1.47h.01c6.27 0 11.38-5.11 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg></a>
 <div class="mini"><span id="mini">—</span><a href="#resumen">Ver desglose</a></div>
 <p class="legal">Precios aproximados para obras en el Garraf y el Penedès, calculados con precios de mercado de 2026 (Habitissimo, Cronoshare, Idealista, Selectra, Leroy Merlin, Obramat y otras guías) y un ajuste del 8 % sobre la media nacional. Incluyen mano de obra y material y van sin IVA; el total con IVA se muestra aparte. No son un presupuesto: el precio real depende del estado de la vivienda, de las mediciones, de los acabados elegidos y de la negociación con proveedores y gremios, y solo se puede dar después de visitar la obra.</p>
 
@@ -313,7 +339,7 @@ function render(){
   (r.tot[1]?row('Proyecto, licencia y dirección de obra',r.gestion)+row('Imprevistos',r.impr)+row('Total sin IVA',r.tot,0,'tot'):'');
  document.getElementById('mini').textContent=r.tot[1]?`${fmt(r.tot[0])} – ${fmt(r.tot[1])} + IVA · aproximado`:'Marca una partida';
  const txt=resumen(r);
- document.getElementById('wa').href='https://wa.me/34671410508?text='+encodeURIComponent('Hola COR STUDIO, me gustaría que visitarais la obra para darme un presupuesto.\n\n'+txt);
+ document.getElementById('waf').href='https://wa.me/34671410508?text='+encodeURIComponent('Hola COR STUDIO, vengo de la calculadora de reforma. Me gustaría que visitarais la obra para darme un presupuesto.');
  try{localStorage.setItem('corstudio-calc-v4',JSON.stringify(S))}catch(e){}
 }
 function resumen(r){
@@ -337,6 +363,34 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.id==='copy'){const t=resumen(calc()),m=document.getElementById('msg');
   navigator.clipboard.writeText(t).then(()=>m.textContent='Resumen copiado.').catch(()=>m.textContent='No se ha podido copiar. Selecciona el desglose y cópialo a mano.')}});
 tarifas();render();
+// ---- recibir el cálculo (lead)
+const SUPA='https://uoyiufekbtmtuwpuattq.supabase.co',SKEY='sb_publishable_GzcfCVIlE3K_3pVBcFIFMw_ou1m4F7v';
+const lf=document.getElementById('recibir'),lm=document.getElementById('lmsg');let canal='whatsapp';
+function setCanal(c){canal=c;lf.querySelectorAll('[data-canal]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.canal===c)));
+ lf.telefono.required=c==='whatsapp';lf.email.required=c==='email';
+ document.getElementById('fTel').firstChild.textContent=c==='whatsapp'?'Teléfono / WhatsApp':'Teléfono (opcional)';document.getElementById('fMail').firstChild.textContent=c==='email'?'Email':'Email (opcional)';
+ document.getElementById('enviar').textContent=c==='whatsapp'?'Recibirlo por WhatsApp':'Recibirlo por email'}
+lf.addEventListener('click',e=>{const b=e.target.closest('[data-canal]');if(b)setCanal(b.dataset.canal)});setCanal('whatsapp');
+lf.addEventListener('submit',async e=>{e.preventDefault();lm.textContent='';
+ if(!lf.reportValidity())return;if(lf.botcheck.checked)return;
+ const r=calc();if(!r.tot[1]){lm.textContent='Marca al menos una partida para calcular.';return}
+ const nombre=lf.nombre.value.trim(),tel=lf.telefono.value.trim(),mail=lf.email.value.trim(),mun=lf.municipio.value.trim(),visita=lf.visita.checked,txt=resumen(r);
+ const btn=document.getElementById('enviar');btn.disabled=true;lm.textContent='Enviando…';
+ // WhatsApp: abrir ya la ventana (si se abre después de esperar, el navegador la bloquea)
+ const w=canal==='whatsapp'?window.open('','_blank'):null;
+ const fila={nombre,email:mail||null,telefono:tel||null,municipio:mun||null,canal,quiere_visita:visita,tipo:S.tipo,m2:+S.m2||null,total_min:Math.round(r.tot[0]),total_max:Math.round(r.tot[1]),resumen:txt,datos:S,consentimiento:true};
+ const jobs=[fetch(SUPA+'/rest/v1/studio_calculos',{method:'POST',headers:{apikey:SKEY,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(fila)}).then(x=>x.ok)];
+ const key=window.COR_STUDIO_WEB3FORMS_KEY;
+ if(key)jobs.push(fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:key,subject:`Calculadora COR STUDIO · ${nombre} · ${fmt(r.tot[0])} – ${fmt(r.tot[1])}`,from_name:'Calculadora COR STUDIO',name:nombre,email:mail||'sin-email@cor.homes',replyto:mail||undefined,'Teléfono':tel||'-','Municipio':mun||'-','Quiere recibirlo por':canal==='whatsapp'?'WhatsApp':'Email','Quiere visita':visita?'Sí':'No',message:txt})}).then(x=>x.ok));
+ let envio=null;if(canal==='email')envio=fetch('/api/enviar-calculo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre,email:mail,resumen:txt})}).then(x=>x.ok?x.json():{sent:false}).catch(()=>({sent:false}));
+ const ok=(await Promise.all(jobs.map(j=>j.catch(()=>false)))).some(Boolean);
+ btn.disabled=false;
+ if(!ok){if(w)w.close();lm.textContent='No se ha podido enviar. Escríbenos por WhatsApp al 671 410 508 o a studio@cor.homes.';return}
+ if(canal==='whatsapp'){const u='https://wa.me/34671410508?text='+encodeURIComponent(`Hola COR STUDIO, soy ${nombre}. Este es mi cálculo:\n\n${txt}`+(visita?'\n\nMe gustaría que visitarais la obra.':''));if(w)w.location=u;else location.href=u;
+  lf.innerHTML='<div class="ok"><strong>¡Hecho, '+esc(nombre)+'!</strong> Se ha abierto WhatsApp con tu cálculo: pulsa enviar y te quedará guardado en el chat. Te respondemos en 48 horas.</div>'}
+ else{const e2=await envio;lf.innerHTML='<div class="ok"><strong>¡Hecho, '+esc(nombre)+'!</strong> '+(e2&&e2.sent?'Te hemos enviado el cálculo a '+esc(mail)+'. Si no lo ves, mira en la carpeta de spam.':'Hemos recibido tu cálculo y te lo enviamos a '+esc(mail)+' en menos de 48 horas.')+'</div>'}
+});
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 }
 </script>
 </body>
