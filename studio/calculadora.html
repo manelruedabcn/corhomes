@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de reforma · COR STUDIO</title>
+<meta name="description" content="Calcula el precio aproximado de tu reforma en el Garraf y el Penedès: cocina, baños, suelos, aerotermia, ventanas, placas solares, jardín y piscina.">
+<link rel="canonical" href="https://www.studio.cor.homes/calculadora">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="COR STUDIO">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://www.studio.cor.homes/calculadora">
+<meta property="og:title" content="¿Cuánto cuesta tu reforma? · COR STUDIO">
+<meta property="og:description" content="Precio aproximado de tu reforma al momento. Para un presupuesto válido, visitamos la obra.">
+<meta property="og:image" content="https://www.studio.cor.homes/og/cor-studio-es.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4F5E4C">
+<link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://www.studio.cor.homes/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sereno y preciso, como un buen jefe de obra que te explica el presupuesto.
+   IDEA: la hoja de mediciones de una obra: partidas a la izquierda, total que se mueve a la derecha.
+   PICTURE: el resultado en grande, con barras por partida que crecen al marcar opciones.
+   COLOUR y TYPE: marca COR (verde oscuro #4F5E4C, oliva, arena, crema). Playfair para cifras y títulos, Inter para todo lo demás.
+   LAYOUT: formulario en una columna; resumen fijo a la derecha en escritorio, debajo en móvil. */
+:root{color-scheme:light dark;--bg:light-dark(#F5F0E6,#1d211c);--card:light-dark(#fffdf8,#262b25);--ink:light-dark(#2B2A26,#ece6d8);--soft:light-dark(#5E5A50,#b9b2a2);--line:light-dark(#d9d0bb,#3b4238);--green:#4F5E4C;--olive:#7B8B6F;--sand:light-dark(#DDD5BD,#4a5246);--acc:light-dark(#4F5E4C,#a9bb9c)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,.big{font-family:'Playfair Display',Georgia,serif;font-weight:500;text-wrap:balance}
+header{background:var(--green);color:#F5F0E6;padding:22px max(5vw,16px)}
+header .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;max-width:1240px;margin:auto}
+header b{font-family:'Playfair Display',serif;letter-spacing:.14em;font-weight:500;font-size:20px}
+header h1{font-size:clamp(30px,4.4vw,46px);line-height:1.06;margin:18px auto 6px;max-width:1240px}
+header p{margin:0 auto;max-width:1240px;color:#DDD5BD}
+main{max-width:1240px;margin:auto;padding:28px max(5vw,16px) 64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:28px;align-items:start}
+@media(max-width:900px){main{grid-template-columns:minmax(0,1fr)}aside{position:static!important}}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+button,.btn{font:inherit;min-height:44px;padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button.pri,.btn.pri{background:var(--green);color:#F5F0E6;border-color:var(--green)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--olive);outline-offset:2px}
+section.s{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+section.s>label.head{display:flex;gap:12px;align-items:center;cursor:pointer}
+section.s h2{font-size:21px;margin:0;line-height:1.2}
+section.s .sub{color:var(--soft);font-size:14px;margin:2px 0 0}
+.body{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px 16px;margin-top:14px}
+.s.off .body{display:none}
+.f{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--soft)}
+input[type=number],select{font:inherit;font-size:16px;min-height:44px;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--green);flex:none}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{min-height:40px;padding:6px 12px;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--green);color:#F5F0E6;border-color:var(--green)}
+.hint{font-size:13px;color:var(--soft);grid-column:1/-1;margin:0}
+aside{position:sticky;top:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.res{background:var(--green);color:#F5F0E6;padding:20px 22px}
+.res .lbl{font-size:14px;color:#DDD5BD}
+.big{font-size:clamp(28px,3vw,36px);line-height:1.1;margin:4px 0}.big span{white-space:nowrap}
+.res .m2{font-size:14px;color:#DDD5BD}
+.rows{padding:14px 22px 6px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:14px;padding:6px 0;border-bottom:1px solid var(--line)}
+.row span:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1;height:6px;background:var(--sand);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--olive);transition:width .35s}
+.row.tot{font-weight:600;border-bottom:0}
+.cta{padding:12px 22px 22px;display:grid;gap:10px}
+.cta p{margin:0;font-size:13px;color:var(--soft)}
+.aviso{max-width:1240px;margin:18px auto 0;background:#F5F0E6;color:#2B2A26;border-left:5px solid #DDD5BD;border-radius:6px;padding:12px 16px;font-size:15px}
+.aviso strong{color:#4F5E4C}
+.pm{max-width:1240px;margin:0 auto;padding:28px max(5vw,16px) 0}
+.pm h2{font-size:clamp(24px,3vw,32px);margin:0 0 6px}
+.pm>p{color:var(--soft);margin:0 0 16px;max-width:760px}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}
+.vs div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.vs div.us{border:2px solid var(--green)}
+.vs h3{margin:0 0 8px;font-size:17px}
+.vs ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.aprox{background:#DDD5BD;color:#2B2A26;padding:10px 22px;font-size:13.5px;line-height:1.45}
+.ahorro{margin:0;padding:12px 22px 0;font-size:14px}
+.legal{font-size:13px;color:var(--soft);max-width:1240px;margin:0 auto;padding:0 max(5vw,16px) 40px}
+details.tar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin-top:6px}
+details.tar summary{cursor:pointer;font-weight:600;min-height:32px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;margin-top:10px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+td input{min-height:36px;padding:4px 6px;width:86px;text-align:right}
+td.n{white-space:nowrap}
+.mini{display:none}
+@media(max-width:900px){.mini{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--green);color:#F5F0E6;padding:10px 16px;justify-content:space-between;align-items:center;gap:10px;font-size:15px}.mini a{color:#F5F0E6;white-space:nowrap}body{padding-bottom:64px}}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="top"><a href="./" style="color:inherit;text-decoration:none" aria-label="COR STUDIO, inicio"><b>COR STUDIO</b></a><span style="font-size:14px;color:#DDD5BD">Reformas · Garraf y Penedès</span></div>
+<h1>¿Cuánto cuesta tu reforma?</h1>
+<p>Marca lo que quieres hacer y elige el nivel de acabados. El precio aproximado se calcula al momento.</p>
+<div class="aviso"><strong>Son precios aproximados, no un presupuesto.</strong> Para darte un presupuesto válido tenemos que visitar la obra, medir y ver el estado de la vivienda. Esta calculadora solo te da una idea del orden de magnitud.</div>
+</header>
+<section class="pm" aria-labelledby="pmh">
+<h2 id="pmh">Un project manager trabaja para ti, no para la obra</h2>
+<p>En COR STUDIO dirigimos tu reforma de principio a fin y negociamos cada producto y cada gremio para que te salga más económica.</p>
+<div class="vs">
+<div><h3>Un reformista</h3><ul><li>Te vende su obra: gana con el margen de materiales y mano de obra.</li><li>Elige los productos que a él le convienen.</li><li>Si algo se desvía, defiende su presupuesto.</li></ul></div>
+<div class="us"><h3>COR STUDIO, tu project manager</h3><ul><li>Trabaja para ti, el cliente: su interés es que pagues lo justo.</li><li>Negocia materiales, electrodomésticos y acabados con los proveedores para conseguir mejor precio.</li><li>Pide varias ofertas por oficio y contrata a gremios legalizados.</li><li>Controla costes, plazos y calidad. Tú tienes un único interlocutor.</li></ul></div>
+</div>
+</section>
+
+<main>
+<div>
+<div class="presets" aria-label="Ejemplos">
+<button type="button" data-preset="piso">Ejemplo: piso de 90 m²</button>
+<button type="button" data-preset="casa">Ejemplo: casa de 300 m² para reformar entera</button>
+<button type="button" data-preset="cero">Empezar de cero</button>
+</div>
+<form id="f" onsubmit="return false"></form>
+
+<details class="tar" id="tarifas">
+<summary>Tarifas que usa la calculadora (editables)</summary>
+<p class="hint">Precios mínimo y máximo por unidad, IVA no incluido. Al cambiarlos, se recalcula todo y se guardan en este navegador.</p>
+<div class="scroll"><table id="ttab"><thead><tr><th>Concepto</th><th>Unidad</th><th>Mín.</th><th>Máx.</th></tr></thead><tbody></tbody></table></div>
+<p><button type="button" id="reset">Restaurar tarifas de origen</button></p>
+</details>
+</div>
+
+<aside id="resumen" aria-live="polite">
+<div class="res">
+<div class="lbl">Precio aproximado de tu reforma</div>
+<div class="big" id="total">—</div>
+<div class="m2" id="m2"></div>
+</div>
+<div class="aprox"><strong>Precio aproximado.</strong> Solo será un presupuesto válido después de visitar la obra.</div>
+<p class="ahorro">Como project manager negociamos los productos y los gremios por ti, para que el precio final sea más económico.</p>
+<div class="rows" id="rows"></div>
+<div class="cta">
+<button type="button" class="pri" id="copy">Copiar resumen</button>
+<a class="btn" id="wa" href="#" style="text-align:center;text-decoration:none">Pedir visita y presupuesto por WhatsApp</a>
+<p>WhatsApp 671 410 508 · studio@cor.homes · respondemos en 48 h</p>
+<p id="msg" role="status"></p>
+</div>
+</aside>
+</main>
+<div class="mini"><span id="mini">—</span><a href="#resumen">Ver desglose</a></div>
+<p class="legal">Precios aproximados para obras en el Garraf y el Penedès, calculados con precios de mercado de 2026 (Habitissimo, Cronoshare, Idealista, Selectra, Leroy Merlin, Obramat y otras guías) y un ajuste del 8 % sobre la media nacional. Incluyen mano de obra y material y van sin IVA; el total con IVA se muestra aparte. No son un presupuesto: el precio real depende del estado de la vivienda, de las mediciones, de los acabados elegidos y de la negociación con proveedores y gremios, y solo se puede dar después de visitar la obra.</p>
+
+<script>
+{
+const L=['Básico','Medio','Alto'];
+const DEF={
+ dem:{n:'Demoliciones y retirada de residuos (reforma integral)',u:'€/m² vivienda',v:[36,42]},
+ demLig:{n:'Desmontaje ligero (actualizar)',u:'€/m² vivienda',v:[6,12]},
+ ele:{n:'Instalación eléctrica nueva',u:'€/m² vivienda',v:[30,60]},
+ cuadro:{n:'Cuadro eléctrico, aumento de potencia y boletín',u:'€ por vivienda',v:[700,1200]},
+ fonBase:{n:'Fontanería y desagües de cocina',u:'€ por vivienda',v:[1200,3000]},
+ fonBano:{n:'Fontanería y desagües por baño',u:'€ por baño',v:[1000,3000]},
+ coc0:{n:'Muebles de cocina · Básico',u:'€/ml',v:[480,960]},coc1:{n:'Muebles de cocina · Medio',u:'€/ml',v:[960,1800]},coc2:{n:'Muebles de cocina · Alto',u:'€/ml',v:[1800,4800]},
+ enc0:{n:'Encimera · Laminada',u:'€/ml instalada',v:[60,160]},enc1:{n:'Encimera · Cuarzo (Silestone o similar)',u:'€/ml instalada',v:[240,500]},enc2:{n:'Encimera · Porcelánico o Dekton',u:'€/ml instalada',v:[400,600]},
+ ele0:{n:'Electrodomésticos · Beko (básico)',u:'€ pack 5 equipos',v:[1700,2500]},ele1:{n:'Electrodomésticos · Bosch (medio)',u:'€ pack 5 equipos',v:[3000,4500]},ele2:{n:'Electrodomésticos · Alta gama (Miele, Gaggenau)',u:'€ pack 5 equipos',v:[7800,12000]},
+ obc:{n:'Instalación y montaje de la cocina',u:'€ por cocina',v:[1100,4000]},
+ revC:{n:'Revestimiento de paredes de cocina (retirada, material y colocación)',u:'€/m² pared',v:[35,75]},
+ isla:{n:'Isla de cocina',u:'€ por isla',v:[500,2500]},
+ sLam:{n:'Suelo laminado',u:'€/m² colocado',v:[25,45]},sPar:{n:'Parquet natural',u:'€/m² colocado',v:[50,100]},sGres:{n:'Gres porcelánico',u:'€/m² colocado',v:[35,70]},sMic:{n:'Microcemento',u:'€/m² aplicado',v:[50,90]},sMar:{n:'Mármol',u:'€/m² colocado',v:[50,150]},
+ sPrep:{n:'Retirada del suelo antiguo con rodapié y desescombro (solo al actualizar)',u:'€/m² suelo',v:[10,15]},
+ ban0:{n:'Baño completo · Básico',u:'€ por baño',v:[3500,5000]},ban1:{n:'Baño completo · Medio',u:'€ por baño',v:[5000,7000]},ban2:{n:'Baño completo · Alto',u:'€ por baño',v:[8000,15000]},
+ bat0:{n:'Bañera encastrada en vez de ducha · Básico',u:'€ por baño',v:[100,700]},bat1:{n:'Bañera encastrada o de carga mineral · Medio',u:'€ por baño',v:[700,1900]},bat2:{n:'Bañera exenta · Alto',u:'€ por baño',v:[1000,2500]},
+ aeroB:{n:'Aerotermia: bomba de calor, depósito ACS e instalación',u:'€ base',v:[4500,7000]},aeroM:{n:'Aerotermia: según superficie',u:'€/m² vivienda',v:[10,18]},
+ rad:{n:'Suelo radiante',u:'€/m² suelo',v:[40,70]},radB:{n:'Radiadores de baja temperatura',u:'€ por radiador (1 cada 12 m²)',v:[350,500]},
+ techo:{n:'Falso techo de pladur',u:'€/m² techo',v:[20,45]},
+ led0:{n:'Punto de luz LED · Básico (downlight)',u:'€ por punto instalado',v:[22,32]},led1:{n:'Punto de luz LED · Medio (regulable, cálido a frío)',u:'€ por punto instalado',v:[32,45]},led2:{n:'Punto de luz LED · Alto (luminaria de diseño)',u:'€ por punto instalado',v:[85,350]},
+ tira:{n:'Tira LED con perfil',u:'€/m instalado',v:[30,50]},
+ pin:{n:'Pintura de paredes y techos',u:'€/m² vivienda',v:[10,25]},
+ pu0:{n:'Puerta interior · Básico',u:'€ por puerta instalada',v:[200,360]},pu1:{n:'Puerta interior · Medio (lacada)',u:'€ por puerta instalada',v:[360,540]},pu2:{n:'Puerta interior · Alto',u:'€ por puerta instalada',v:[540,1300]},
+ ar0:{n:'Armario empotrado · Básico',u:'€ por armario',v:[960,1400]},ar1:{n:'Armario empotrado · Medio',u:'€ por armario',v:[1400,2200]},ar2:{n:'Armario empotrado · Alto',u:'€ por armario',v:[2200,3000]},
+ ve0:{n:'Ventana eficiente · PVC',u:'€ por ventana colocada',v:[350,700]},ve1:{n:'Ventana eficiente · Aluminio con rotura de puente térmico',u:'€ por ventana colocada',v:[350,600]},ve2:{n:'Ventana eficiente · Madera-aluminio o triple vidrio',u:'€ por ventana colocada',v:[700,1000]},
+ sate:{n:'Aislamiento de fachada SATE con andamio',u:'€/m² fachada',v:[72,85]},
+ fv:{n:'Placas solares (autoconsumo)',u:'€/kWp instalado',v:[850,1300]},fvBat:{n:'Batería para placas solares',u:'€ por batería',v:[3000,5500]},
+ ev:{n:'Punto de recarga de coche eléctrico',u:'€ instalado',v:[900,1700]},
+ cesN:{n:'Césped natural en tepes',u:'€/m² colocado',v:[10,15]},cesA:{n:'Césped artificial',u:'€/m² instalado',v:[30,60]},
+ riego:{n:'Riego automático',u:'€/m² jardín',v:[2,8]},
+ arb:{n:'Plantación de arbustos y árboles pequeños',u:'€ por unidad',v:[15,20]},arbG:{n:'Plantación de olivo o árbol grande',u:'€ por unidad',v:[420,720]},
+ disS:{n:'Diseño de jardín (hasta 200 m²)',u:'€',v:[150,350]},disL:{n:'Diseño de jardín (más de 200 m²)',u:'€',v:[500,2000]},
+ tPor:{n:'Terraza exterior · Cerámico o porcelánico',u:'€/m² colocado',v:[45,60]},tCom:{n:'Terraza exterior · Tarima composite',u:'€/m² colocado',v:[60,75]},tMic:{n:'Terraza exterior · Microcemento',u:'€/m² aplicado',v:[45,55]},
+ luzExt:{n:'Iluminación exterior (focos, balizas, farolas)',u:'€ por punto instalado',v:[90,360]},
+ bbq:{n:'Barbacoa de obra',u:'€ por barbacoa',v:[650,2000]},
+ pis6:{n:'Piscina de obra 6×3 con licencia',u:'€ por piscina',v:[13000,27000]},pis8:{n:'Piscina de obra 8×4 gunitada con licencia',u:'€ por piscina',v:[19000,29000]},pis10:{n:'Piscina de obra 10×5 con depuradora y licencia',u:'€ por piscina',v:[23000,40000]},
+ sal:{n:'Clorador salino (equipo)',u:'€ por piscina',v:[300,1200]},
+ cal6:{n:'Bomba de calor para piscina · 6×3',u:'€',v:[1200,3000]},cal8:{n:'Bomba de calor para piscina · 8×4',u:'€',v:[3000,4500]},cal10:{n:'Bomba de calor para piscina · 10×5',u:'€',v:[5400,6000]}
+};
+let T;try{T=Object.assign(JSON.parse(JSON.stringify(DEF)),JSON.parse(localStorage.getItem('corstudio-tarifas-v5')||'{}'))}catch(e){T=JSON.parse(JSON.stringify(DEF))}
+const save=()=>{try{localStorage.setItem('corstudio-tarifas-v5',JSON.stringify(T))}catch(e){}};
+
+const BASE={m2:90,tipo:'piso',estado:'integral',
+ inst:{on:true,ele:true,fon:true},
+ coc:{on:true,ml:5,mue:1,enc:1,ele:1,isla:false,rev:8},
+ suelo:{on:true,m2:80,tipo:'sGres'},
+ ban:{on:true,n:1,niv:1,banera:false},
+ clima:{on:false,em:'radB'},
+ techo:{on:true,pct:30},
+ pin:{on:true},
+ carp:{on:true,pu:7,puN:1,ar:2,arN:1},
+ vent:{on:false,n:6,niv:1},
+ sate:{on:false,m2:150},
+ led:{on:true,n:25,niv:1,tira:0},
+ fv:{on:false,kwp:5,bat:false},
+ ev:{on:false},
+ ext:{on:false,jar:0,ces:'cesN',riego:true,arb:0,arbG:0,dis:false,terr:0,terrT:'tPor',luz:0,bbq:false,pis:false,pisT:'8',sal:true,cal:false},
+ gest:{zona:8,proy:7,lic:4,dir:5,imp:10,iva:10}};
+const mk=o=>{const r=JSON.parse(JSON.stringify(BASE));for(const k in o)r[k]=typeof o[k]==='object'?Object.assign(r[k]||{},o[k]):o[k];return r};
+const PRESETS={
+ piso:BASE,
+ casa:mk({m2:300,tipo:'casa',coc:{ml:7,mue:2,enc:2,isla:true,rev:12},suelo:{m2:270,tipo:'sMic'},ban:{n:2},clima:{on:true,em:'rad'},techo:{pct:40},led:{n:70,niv:1,tira:20},carp:{pu:14,ar:4},vent:{on:true,n:18,niv:1},sate:{on:true,m2:350},fv:{on:true,kwp:5,bat:false},ev:{on:true},ext:{on:true,jar:250,ces:'cesN',riego:true,arb:30,arbG:2,dis:true,terr:60,terrT:'tPor',luz:8,bbq:false,pis:true,pisT:'8',sal:true,cal:true},gest:{proy:6}}),
+ cero:mk({estado:'actualizar',inst:{on:false},coc:{on:false},suelo:{on:false,tipo:'sLam'},ban:{on:false},techo:{on:false},led:{on:false},pin:{on:false},carp:{on:false,ar:0},gest:{proy:0,lic:2}})
+};
+let S;try{S=JSON.parse(localStorage.getItem('corstudio-calc-v4'))||null}catch(e){S=null}
+if(!S||!S.gest||!S.led||S.led.n===undefined||!S.ext||S.ext.arb===undefined)S=JSON.parse(JSON.stringify(BASE));
+
+const num=(p,label,min,max,step,suf)=>`<label class="f">${label}<input type="number" data-p="${p}" min="${min}" max="${max}" step="${step||1}"></label>`;
+const seg=(p,label,opts)=>`<div class="f"><span>${label}</span><div class="seg" role="group" aria-label="${label}">${opts.map(([v,t])=>`<button type="button" data-p="${p}" data-v="${v}">${t}</button>`).join('')}</div></div>`;
+const lv=p=>[[0,'Básico'],[1,'Medio'],[2,'Alto']];
+const sec=(k,t,sub,body,fixed)=>`<section class="s" data-sec="${k}"><label class="head">${fixed?'':`<input type="checkbox" data-p="${k}.on" aria-label="Incluir ${t}">`}<div><h2>${t}</h2><p class="sub">${sub}</p></div></label><div class="body">${body}</div></section>`;
+
+document.getElementById('f').innerHTML=
+ sec('viv','La vivienda','Superficie útil y punto de partida.',
+  num('m2','Superficie útil (m²)',20,1500,5)+seg('tipo','Tipo',[['piso','Piso'],['casa','Casa']])+seg('estado','Estado',[['actualizar','Actualizar'],['integral','Reforma integral']]),true)+
+ sec('inst','Instalaciones','Electricidad y agua nuevas.',
+  `<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="inst.ele">Instalación eléctrica</label><label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="inst.fon">Fontanería y desagües</label><p class="hint">La fontanería se calcula con el número de baños de la sección Baños.</p>`)+
+ sec('coc','Cocina','Muebles, encimera y electrodomésticos.',
+  num('coc.ml','Metros lineales de muebles',1,20,0.5)+seg('coc.mue','Muebles',lv())+seg('coc.enc','Encimera',[[0,'Laminado'],[1,'Cuarzo'],[2,'Porcelánico']])+seg('coc.ele','Electrodomésticos',[[0,'Beko'],[1,'Bosch'],[2,'Alta gama']])+num('coc.rev','Paredes a revestir (m²)',0,60)+`<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="coc.isla">Con isla</label><p class="hint">Pack de 5 electrodomésticos: horno, placa, campana, frigorífico y lavavajillas. Incluye instalación y montaje de la cocina.</p>`)+
+ sec('suelo','Suelos','Todo el paquete: retirada, nivelación, colocación y rodapié.',
+  num('suelo.m2','Superficie de suelo (m²)',5,1500,5)+seg('suelo.tipo','Tipo de suelo',[['sLam','Laminado'],['sPar','Parquet natural'],['sGres','Gres'],['sMic','Microcemento'],['sMar','Mármol']]))+
+ sec('ban','Baños','Sanitarios, grifería, revestimientos y mueble.',
+  num('ban.n','Número de baños',1,8)+seg('ban.niv','Nivel',lv())+seg('ban.banera','Ducha o bañera',[['false','Plato de ducha y mampara'],['true','Bañera']]))+
+ sec('clima','Aerotermia','Calefacción, refrescamiento y agua caliente.',
+  seg('clima.em','Cómo llega el calor',[['rad','Suelo radiante'],['radB','Radiadores de baja temperatura']])+`<p class="hint">El suelo radiante se calcula sobre los m² de suelo.</p>`)+
+ sec('techo','Falso techo','Pladur, por donde pasan las instalaciones y la luz.',
+  num('techo.pct','Parte de la vivienda con falso techo (%)',0,100,5))+
+ sec('led','Iluminación LED','Puntos de luz, tiras y regulación.',
+  num('led.n','Puntos de luz',0,400)+seg('led.niv','Tipo de punto',[[0,'Downlight básico'],[1,'Regulable cálido-frío'],[2,'Luminaria de diseño']])+num('led.tira','Tira LED (metros)',0,300))+
+ sec('pin','Pintura','Paredes y techos de toda la vivienda.','<p class="hint">Se calcula sobre la superficie útil.</p>')+
+ sec('carp','Carpintería interior','Puertas y armarios empotrados.',
+  num('carp.pu','Número de puertas',0,40)+seg('carp.puN','Puertas',lv())+num('carp.ar','Armarios empotrados (unidades)',0,30)+seg('carp.arN','Armarios',lv()))+
+ sec('vent','Ventanas eficientes','Doble o triple vidrio bajo emisivo: menos pérdidas y menos ruido.',
+  num('vent.n','Número de ventanas',1,60)+seg('vent.niv','Tipo',[[0,'PVC'],[1,'Aluminio RPT'],[2,'Madera-aluminio o triple vidrio']]))+
+ sec('sate','Aislamiento de fachada (SATE)','Para casas. Mejora el confort y la eficiencia.',
+  num('sate.m2','Superficie de fachada (m²)',10,2000,10))+
+ sec('fv','Placas solares','Autoconsumo para casas: reduce la factura y alimenta la aerotermia.',
+  seg('fv.kwp','Potencia',[[3,'3 kWp'],[5,'5 kWp'],[8,'8 kWp'],[10,'10 kWp']])+`<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="fv.bat">Con batería</label><p class="hint">Orientativo: 5 kWp para una casa con aerotermia; 8–10 kWp si hay coche eléctrico o piscina climatizada.</p>`)+
+ sec('ev','Recarga de coche eléctrico','Punto de recarga de 7,4 kW en garaje o parking, con línea y certificado.','<p class="hint">Si el garaje está lejos del cuadro eléctrico, puede costar más.</p>')+
+ sec('ext','Exteriores','Jardín, terraza, iluminación, barbacoa y piscina.',
+  num('ext.jar','Superficie de jardín (m²)',0,5000,10)+seg('ext.ces','Césped',[['cesN','Natural en tepes'],['cesA','Artificial']])+
+  `<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.riego">Riego automático</label>`+
+  num('ext.arb','Arbustos y árboles pequeños (unidades)',0,500)+num('ext.arbG','Olivos o árboles grandes (unidades)',0,30)+`<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.dis">Diseño de jardín por paisajista</label>`+
+  num('ext.terr','Terraza o zona pavimentada (m²)',0,2000,5)+seg('ext.terrT','Pavimento exterior',[['tPor','Cerámico o porcelánico'],['tCom','Composite'],['tMic','Microcemento']])+
+  num('ext.luz','Puntos de luz exterior',0,100)+
+  `<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.bbq">Barbacoa de obra</label>`+
+  `<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.pis">Piscina de obra</label>`+
+  seg('ext.pisT','Tamaño de piscina',[['6','6×3 m'],['8','8×4 m'],['10','10×5 m']])+
+  `<label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.sal">Cloración salina</label><label class="f" style="flex-direction:row;align-items:center;gap:10px"><input type="checkbox" data-p="ext.cal">Climatizada (bomba de calor)</label>`)+
+ sec('gest','Proyecto, dirección e imprevistos','Lo que muchas calculadoras no cuentan.',
+  num('gest.zona','Ajuste de precios a la zona del Garraf (%)',-20,40,1)+num('gest.proy','Proyecto y dirección técnica del arquitecto (%)',0,20,0.5)+num('gest.lic','Licencia, tasas e ICIO (%)',0,10,0.5)+num('gest.dir','Dirección de obra COR STUDIO (%)',0,20,0.5)+num('gest.imp','Imprevistos (%)',0,30,1)+seg('gest.iva','IVA',[[10,'10 % (vivienda)'],[21,'21 %']])+`<p class="hint">Una reforma sin cambios de distribución ni estructura suele ir con comunicación previa: pon el arquitecto a 0 % y la licencia en torno al 2 %.</p>`,true);
+
+const get=p=>p.split('.').reduce((o,k)=>o[k],S);
+const set=(p,v)=>{const ks=p.split('.');let o=S;ks.slice(0,-1).forEach(k=>o=o[k]);o[ks.at(-1)]=v};
+const R=(k,q)=>{const f=1+(+S.gest.zona||0)/100;return[T[k].v[0]*q*f,T[k].v[1]*q*f]};
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const eur=x=>Math.round(x/100)*100;
+const fmt=x=>String(eur(x)).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' €';
+
+function calc(){
+ const m=+S.m2||0,parts=[],casa=S.tipo==='casa';
+ const P=(n,r)=>{if(r[1]>0)parts.push([n,r])};
+ P('Demoliciones y residuos',S.estado==='integral'?R('dem',m):R('demLig',m));
+ if(S.inst.on){let r=[0,0];if(S.inst.ele)r=add(r,add(R('ele',m*(casa?1.1:1)),R('cuadro',1)));if(S.inst.fon)r=add(r,add(R('fonBase',1),R('fonBano',S.ban.on?+S.ban.n:1)));P('Instalaciones',r)}
+ if(S.coc.on){const ml=+S.coc.ml,n=S.coc.mue;let r=add(add(add(R('coc'+n,ml),R('enc'+S.coc.enc,ml*0.8)),R('ele'+S.coc.ele,1)),add(R('obc',1),R('revC',+S.coc.rev||0)));if(S.coc.isla)r=add(r,R('isla',1));P('Cocina',r)}
+ if(S.suelo.on){const q=+S.suelo.m2;P('Suelos',S.estado==='integral'?R(S.suelo.tipo,q):add(R(S.suelo.tipo,q),R('sPrep',q)))}
+ if(S.ban.on){const n=+S.ban.n;let r=R('ban'+S.ban.niv,n);if(S.ban.banera)r=add(r,R('bat'+S.ban.niv,n));P(n>1?`Baños (${n})`:'Baño',r)}
+ if(S.clima.on){let r=add(R('aeroB',1),R('aeroM',m));const e=S.clima.em;r=add(r,e==='rad'?R('rad',S.suelo.on?+S.suelo.m2:m*0.9):R('radB',Math.ceil(m/12)));P('Aerotermia',r)}
+ if(S.techo.on)P('Falso techo',R('techo',m*(+S.techo.pct)/100));
+ if(S.led.on)P('Iluminación LED',add(R('led'+S.led.niv,+S.led.n||0),R('tira',+S.led.tira||0)));
+ if(S.pin.on)P('Pintura',R('pin',m));
+ if(S.carp.on)P('Carpintería interior',add(R('pu'+S.carp.puN,+S.carp.pu),R('ar'+S.carp.arN,+S.carp.ar)));
+ if(S.vent.on)P('Ventanas eficientes',R('ve'+S.vent.niv,+S.vent.n));
+ if(S.sate.on)P('Aislamiento SATE',R('sate',+S.sate.m2));
+ if(S.fv.on)P('Placas solares',add(R('fv',+S.fv.kwp),S.fv.bat?R('fvBat',1):[0,0]));
+ if(S.ev.on)P('Recarga de coche eléctrico',R('ev',1));
+ if(S.ext.on){const x=S.ext,j=+x.jar||0;
+  let g=add(add(R(x.ces,j),R('arb',+x.arb||0)),R('arbG',+x.arbG||0));if(x.riego)g=add(g,R('riego',j));if(x.dis)g=add(g,R(j>200?'disL':'disS',1));
+  P('Jardín y jardinería',g);
+  P('Terraza exterior',R(x.terrT,+x.terr||0));
+  let o=R('luzExt',+x.luz||0);if(x.bbq)o=add(o,R('bbq',1));P(x.bbq?'Iluminación exterior y barbacoa':'Iluminación exterior',o);
+  if(x.pis){let pz=R('pis'+x.pisT,1);if(x.sal)pz=add(pz,R('sal',1));if(x.cal)pz=add(pz,R('cal'+x.pisT,1));P(`Piscina ${x.pisT==='6'?'6×3':x.pisT==='8'?'8×4':'10×5'}${x.sal?' salina':''}${x.cal?' climatizada':''}`,pz)}}
+ const sub=parts.reduce((a,p)=>add(a,p[1]),[0,0]);
+ const g=S.gest,k=((+g.proy||0)+(+g.lic||0)+(+g.dir||0))/100,imp=+g.imp/100;
+ const gestion=[sub[0]*k,sub[1]*k],impr=[(sub[0]+gestion[0])*imp,(sub[1]+gestion[1])*imp];
+ const tot=[sub[0]+gestion[0]+impr[0],sub[1]+gestion[1]+impr[1]];
+ return{parts,sub,gestion,impr,tot,iva:+g.iva,m};
+}
+
+function render(){
+ document.querySelectorAll('[data-p]').forEach(el=>{const v=get(el.dataset.p);
+  if(el.type==='checkbox')el.checked=!!v;else if(el.dataset.v!==undefined)el.setAttribute('aria-pressed',String(el.dataset.v)===String(v));else if(document.activeElement!==el)el.value=v});
+ document.querySelectorAll('section.s').forEach(s=>{const c=s.querySelector('.head input');if(c)s.classList.toggle('off',!c.checked)});
+ document.querySelectorAll('[data-p="ext.pisT"],[data-p="ext.sal"],[data-p="ext.cal"]').forEach(e=>{const w=e.closest('.f');if(w)w.style.display=S.ext.pis?'':'none'});
+ document.querySelector('[data-sec=fv] .sub').textContent=S.tipo==='casa'?'Autoconsumo: reduce la factura y alimenta la aerotermia.':'Normalmente solo en casas o áticos con cubierta propia.';
+ document.querySelector('[data-sec=sate] .sub').textContent=S.tipo==='casa'?'Mejora el confort y que la aerotermia rinda.':'Normalmente solo en casas.';
+ const r=calc(),mx=Math.max(1,...r.parts.map(p=>p[1][1]));
+ document.getElementById('total').innerHTML=r.tot[1]?`<span>${fmt(r.tot[0])}</span> – <span>${fmt(r.tot[1])}</span>`:'Marca una partida';
+ document.getElementById('m2').textContent=r.tot[1]?`Sin IVA · ${Math.round(r.tot[0]/r.m)}–${Math.round(r.tot[1]/r.m)} €/m² · con IVA del ${r.iva} %: ${fmt(r.tot[0]*(1+r.iva/100))} – ${fmt(r.tot[1]*(1+r.iva/100))}`:'';
+ const row=(n,v,b,c)=>`<div class="row ${c||''}"><span>${n}</span><span>${fmt(v[0])} – ${fmt(v[1])}</span>${b?`<div class="bar"><i style="width:${(v[1]/mx*100).toFixed(1)}%"></i></div>`:''}</div>`;
+ document.getElementById('rows').innerHTML=r.parts.map(p=>row(p[0],p[1],1)).join('')+
+  (r.tot[1]?row('Proyecto, licencia y dirección de obra',r.gestion)+row('Imprevistos',r.impr)+row('Total sin IVA',r.tot,0,'tot'):'');
+ document.getElementById('mini').textContent=r.tot[1]?`${fmt(r.tot[0])} – ${fmt(r.tot[1])} + IVA · aproximado`:'Marca una partida';
+ const txt=resumen(r);
+ document.getElementById('wa').href='https://wa.me/34671410508?text='+encodeURIComponent('Hola COR STUDIO, me gustaría que visitarais la obra para darme un presupuesto.\n\n'+txt);
+ try{localStorage.setItem('corstudio-calc-v4',JSON.stringify(S))}catch(e){}
+}
+function resumen(r){
+ return `Reforma de ${S.tipo} de ${S.m2} m² (${S.estado==='integral'?'reforma integral':'actualizar'})\n`+
+  r.parts.map(p=>`· ${p[0]}: ${fmt(p[1][0])} – ${fmt(p[1][1])}`).join('\n')+
+  `\n· Proyecto, licencias y dirección: ${fmt(r.gestion[0])} – ${fmt(r.gestion[1])}\n· Imprevistos: ${fmt(r.impr[0])} – ${fmt(r.impr[1])}\nTotal aproximado sin IVA: ${fmt(r.tot[0])} – ${fmt(r.tot[1])}\n\nPrecio aproximado calculado con la calculadora de COR STUDIO. El presupuesto válido se da después de visitar la obra.`;
+}
+
+function tarifas(){
+ document.querySelector('#ttab tbody').innerHTML=Object.entries(T).map(([k,t])=>`<tr><td>${t.n}</td><td class="n">${t.u}</td><td><input type="number" data-t="${k}" data-i="0" value="${t.v[0]}" aria-label="${t.n} mínimo"></td><td><input type="number" data-t="${k}" data-i="1" value="${t.v[1]}" aria-label="${t.n} máximo"></td></tr>`).join('');
+}
+
+document.addEventListener('input',e=>{const el=e.target;
+ if(el.dataset.t){T[el.dataset.t].v[+el.dataset.i]=+el.value||0;save();render();return}
+ if(el.dataset.p&&el.type==='number'){set(el.dataset.p,el.value===''?0:+el.value);render()}});
+document.addEventListener('change',e=>{const el=e.target;if(el.dataset.p&&el.type==='checkbox'){set(el.dataset.p,el.checked);render()}});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.v!==undefined&&b.dataset.p){let v=b.dataset.v;v=v==='true'?true:v==='false'?false:isNaN(+v)?v:+v;set(b.dataset.p,v);render()}
+ if(b.dataset.preset){S=JSON.parse(JSON.stringify(PRESETS[b.dataset.preset]));render()}
+ if(b.id==='reset'){T=JSON.parse(JSON.stringify(DEF));save();tarifas();render()}
+ if(b.id==='copy'){const t=resumen(calc()),m=document.getElementById('msg');
+  navigator.clipboard.writeText(t).then(()=>m.textContent='Resumen copiado.').catch(()=>m.textContent='No se ha podido copiar. Selecciona el desglose y cópialo a mano.')}});
+tarifas();render();
+}
+</script>
+</body>
+</html>
